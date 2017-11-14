@@ -56,7 +56,7 @@ public class SearchActivity extends AppCompatActivity {
         lvInhabitants = (ListView)findViewById(R.id.lvInhabitants);
 
         //search from list of habitants while writing
-        etSearchInhab.addTextChangedListener(new TextWatcher() {
+        /*etSearchInhab.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 length = s.toString().length();
@@ -75,16 +75,16 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                /*if(s.toString().length() < length){
+                if(s.toString().length() < length){
 
                     for(String item: inhabitants){
                         if(!item.toLowerCase().contains(s.toString().toLowerCase())){
                             ihList.remove(item);
                         }
                     }
-                }*/
+                }
             }
-        });
+        });*/
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,12 +109,12 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    private void searchPhrase(String s) {
-        /*for(String item:){
+    /*private void searchPhrase(String s) {
+        for(String item:){
             if(!item.toLowerCase().contains(s.toString().toLowerCase())){
             }
-        }*/
-    }
+        }
+    }*/
 
     //FETCHING DATA FROM DATABASE AND PARSING IT TO LISTVIEW
     public class DataList extends AsyncTask<String, String, List<HabitantModel>> {
@@ -127,7 +127,7 @@ public class SearchActivity extends AppCompatActivity {
             BufferedReader reader = null;
             try {
                 //connecting the api
-                URL url = new URL("http://detinhabapi.aspnet.pl/api/habitant/");
+                URL url = new URL("http://detinhabwebapi.azurewebsites.net/api/habitant/");
                 connection = (HttpURLConnection) url.openConnection();
                 InputStream stream = connection.getInputStream();
                 reader = new BufferedReader(new InputStreamReader(stream));
@@ -145,13 +145,8 @@ public class SearchActivity extends AppCompatActivity {
 
                 //making a json object from loaded data + parsing it to a HabitantModel
                 JSONObject dataObject = new JSONObject(data);
-                HabitantModel test = new HabitantModel();
-                test.setHabName(dataObject.getString("Name"));
-                test.setHabSurname(dataObject.getString("Surname"));
 
                 JSONArray habList = dataObject.getJSONArray("ArrayOfHabitiant");
-
-
 
                 List<HabitantModel> habitantsList = new ArrayList<>();
 
@@ -218,7 +213,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 TextView habNameSurname;
                 habNameSurname = (TextView)findViewById(R.id.tvHabitants);
-                habNameSurname.setText(habitantList.get(position).getHabName());
+                habNameSurname.setText(habitantList.get(position).getHabName()+" "+habitantList.get(position).getHabSurname());
                 return convertView;
             }
         }

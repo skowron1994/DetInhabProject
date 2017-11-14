@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "758655037082",
+    "firebase_url": "https://detinhab-89535.firebaseio.com",
+    "project_id": "detinhab-89535",
+    "storage_bucket": "detinhab-89535.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758655037082:android:e82ede11a4f280c9",
+        "android_client_info": {
+          "package_name": "com.detectinhabitants.detinhab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758655037082-eiq29ovv75l411q9i9r4dh47jmo9tvta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_toI01iLm6I6PTD0PJuxmxIdlN5XR4J4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

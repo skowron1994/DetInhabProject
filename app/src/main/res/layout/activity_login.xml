@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginshadow"
+    tools:context="com.detectinhabitants.detinhab.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imgDetinhab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/detinhab"
+        android:layout_marginTop="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/etLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/imgDetinhab"
+        android:layout_centerHorizontal="true"
+        android:hint="Nazwa użytkownika"
+        />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Hasło"
+        android:layout_below="@+id/etLogin"
+        android:layout_alignLeft="@+id/etLogin"
+        android:layout_alignStart="@+id/etLogin"
+        />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Zaloguj"
+        android:layout_below="@+id/etPassword"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/tvPassForgotten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Zapomniałeś hasła?"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/btnLogin"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

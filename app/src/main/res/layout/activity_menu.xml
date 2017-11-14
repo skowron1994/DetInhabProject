@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/loginshadow">
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text=""
+        android:textSize="15dp"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/imgDetinhab2"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tvPurpose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Co chcesz zrobić?"
+        android:textSize="15dp"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/tvWelcome"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnInhManag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="Zarządzaj mieszkańcami"
+        android:width="250dp"
+        android:layout_below="@+id/tvPurpose"
+        android:layout_alignLeft="@+id/btnLogout"
+        android:layout_alignStart="@+id/btnLogout" />
+
+    <Button
+        android:id="@+id/btnGstManag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zarządzaj gośćmi"
+        android:width="250dp"
+        android:layout_below="@+id/btnInhManag"
+        android:layout_alignLeft="@+id/btnInhManag"
+        android:layout_alignStart="@+id/btnInhManag" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGstManag"
+        android:layout_centerHorizontal="true"
+        android:text="Wyloguj się"
+        android:width="250dp"/>
+
+    <ImageView
+        android:id="@+id/imgDetinhab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/detinhab"
+        android:layout_marginTop="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

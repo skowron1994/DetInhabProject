@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/loginshadow">
+
+    <ImageView
+        android:id="@+id/imgDetinhab3"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:srcCompat="@drawable/detinhab"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/lvInhabitants"
+        android:layout_alignEnd="@+id/lvInhabitants" />
+
+    <EditText
+        android:id="@+id/etSearchInhab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:background="#FFFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="21dp"
+        android:width="300dp"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:id="@+id/lvInhabitants"
+        android:layout_marginTop="115dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginBottom="60dp"
+        />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Powrót"
+        android:width="250dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/etHintInhab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSearchInhab"
+        android:layout_alignStart="@+id/etSearchInhab"
+        android:layout_alignTop="@+id/imgDetinhab3"
+        android:text="Wpisz imię lub nazwisko mieszkańca:"
+        android:textColor="#FFFFFF"
+        />
+
+
+</RelativeLayout>

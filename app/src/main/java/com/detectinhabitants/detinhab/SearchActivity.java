@@ -127,7 +127,7 @@ public class SearchActivity extends AppCompatActivity {
             BufferedReader reader = null;
             try {
                 //connecting the api
-                URL url = new URL("http://detinhabwebapi.azurewebsites.net/api/habitant/");
+                URL url = new URL("http://detinhabapi.aspnet.pl/api/habitant/");
                 connection = (HttpURLConnection) url.openConnection();
                 InputStream stream = connection.getInputStream();
                 reader = new BufferedReader(new InputStreamReader(stream));

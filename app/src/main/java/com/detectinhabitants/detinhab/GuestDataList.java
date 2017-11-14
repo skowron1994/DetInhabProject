@@ -30,7 +30,7 @@ public class GuestDataList extends AsyncTask<String, String, List<GuestModel>>{
         BufferedReader reader = null;
         try {
             //connecting the api
-            URL url = new URL("http://detinhabwebapi.azurewebsites.net/api/guest/");
+            URL url = new URL("http://detinhabapi.aspnet.pl/api/guest/");
             connection = (HttpURLConnection) url.openConnection();
             InputStream stream = connection.getInputStream();
             reader = new BufferedReader(new InputStreamReader(stream));

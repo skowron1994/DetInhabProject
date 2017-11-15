@@ -52,9 +52,10 @@ public class SearchActivity extends AppCompatActivity {
         etSearchInhab = (EditText) findViewById(R.id.etSearchInhab);
         btnBack = (Button) findViewById(R.id.btnBack);
         lvInhabitants = (ListView) findViewById(R.id.lvInhabitants);
+        new JsonTask().execute();
 
-        //search from list of habitants while writing
-        /*etSearchInhab.addTextChangedListener(new TextWatcher() {
+        /*//search from list of habitants while writing
+        etSearchInhab.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 length = s.toString().length();
@@ -77,18 +78,26 @@ public class SearchActivity extends AppCompatActivity {
 
                     for(String item: inhabitants){
                         if(!item.toLowerCase().contains(s.toString().toLowerCase())){
-                            ihList.remove(item);
+                            habList.remove(item);
                         }
                     }
                 }
+                adapter.notifyDataSetChanged();
             }
-        });*/
+        });
+
+        private void searchPhrase(String s) {
+            for(String item:){
+                if(!item.toLowerCase().contains(s.toString().toLowerCase())){
+                }
+            }
+
+        }*/
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new JsonTask().execute();
-                //finish();
+                finish();
             }
         });
 
@@ -106,13 +115,6 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
-
-    /*private void searchPhrase(String s) {
-        for(String item:){
-            if(!item.toLowerCase().contains(s.toString().toLowerCase())){
-            }
-        }
-    }*/
 
     //FETCHING DATA FROM DATABASE AND PARSING IT TO LISTVIEW
     public class JsonTask extends AsyncTask<String, String, List<HabitantModel>> {
@@ -182,7 +184,6 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<HabitantModel> s) {
             super.onPostExecute(s);
-            //tvTest.setText(data);
             HabitantAdapter adapter = new HabitantAdapter(getApplicationContext(), R.layout.habitants, s);
             lvInhabitants.setAdapter(adapter);
         }

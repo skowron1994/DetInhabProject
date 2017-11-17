@@ -47,12 +47,13 @@ public class LoginActivity extends AppCompatActivity {
                 ConnectionProcesses login = new ConnectionProcesses();
                 login.execute(etLogin.getText().toString(),etPassword.getText().toString());
                 Toast.makeText(getApplicationContext(),wait,Toast.LENGTH_SHORT).show();
-                if(checker == false){
+                if(!checker){
                     Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
                 }
-                else if (checker == true){
+                else if (checker){
                     Toast.makeText(getApplicationContext(),success,Toast.LENGTH_SHORT).show();
                     Intent logger = new Intent(LoginActivity.this, MenuActivity.class);
+                    //logger.putExtra();
                     startActivity(logger);
 
                 }
@@ -102,21 +103,23 @@ public class LoginActivity extends AppCompatActivity {
 
                 //making a json object from loaded data + parsing it to a UserModel
                 JSONObject dataObject = new JSONObject(data);
-                UserModel account = new UserModel();
-                account.setUsrID(dataObject.getInt("UniqueID"));
-                account.setUsrLogin(dataObject.getString("Login"));
-                account.setUsrPassword(dataObject.getString("Password"));
-                account.setUsrName(dataObject.getString("Name"));
-                account.setUsrSurname(dataObject.getString("Surname"));
-                account.setUsrMail(dataObject.getString("Mail"));
-                account.setUsPermission(dataObject.getInt("PermissionFlag"));
+                AppHelper.UserContext = new UserModel();
+                AppHelper.UserContext.setUsrID(dataObject.getInt("UniqueID"));
+                AppHelper.UserContext.setUsrLogin(dataObject.getString("Login"));
+                AppHelper.UserContext.setUsrPassword(dataObject.getString("Password"));
+                AppHelper.UserContext.setUsrName(dataObject.getString("Name"));
+                AppHelper.UserContext.setUsrSurname(dataObject.getString("Surname"));
+                AppHelper.UserContext.setUsrMail(dataObject.getString("Mail"));
+                AppHelper.UserContext.setUsPermission(dataObject.getInt("PermissionFlag"));
 
-            return data;
+                return data;
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
+
             } catch (IOException e) {
                 e.printStackTrace();
+
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {

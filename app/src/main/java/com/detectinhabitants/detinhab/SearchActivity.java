@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -53,46 +54,6 @@ public class SearchActivity extends AppCompatActivity {
         btnBack = (Button) findViewById(R.id.btnBack);
         lvInhabitants = (ListView) findViewById(R.id.lvInhabitants);
         new JsonTask().execute();
-
-        /*//search from list of habitants while writing
-        etSearchInhab.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                length = s.toString().length();
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.toString().equals("")){
-
-                }
-                else{
-                    searchPhrase(s.toString());
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(s.toString().length() < length){
-
-                    for(String item: inhabitants){
-                        if(!item.toLowerCase().contains(s.toString().toLowerCase())){
-                            habList.remove(item);
-                        }
-                    }
-                }
-                adapter.notifyDataSetChanged();
-            }
-        });
-
-        private void searchPhrase(String s) {
-            for(String item:){
-                if(!item.toLowerCase().contains(s.toString().toLowerCase())){
-                }
-            }
-
-        }*/
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,13 +150,13 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-    public class HabitantAdapter extends ArrayAdapter {
+    public class HabitantAdapter extends ArrayAdapter implements Filterable {
 
         private List<HabitantModel> habitantList;
         private int resource;
         private LayoutInflater inflater;
 
-        public HabitantAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<HabitantModel> objects) {
+        public HabitantAdapter (@NonNull Context context, @LayoutRes int resource, @NonNull List<HabitantModel> objects) {
             super(context, resource, objects);
 
             habitantList = objects;

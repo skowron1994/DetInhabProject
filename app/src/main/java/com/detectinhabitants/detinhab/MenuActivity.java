@@ -21,7 +21,7 @@ public class MenuActivity extends AppCompatActivity {
         Button btnGstManag = (Button) findViewById(R.id.btnGstManag);
         Button btnLogout = (Button) findViewById(R.id.btnLogout);
 
-        String welcome = getIntent().getStringExtra("username");
+        String welcome = AppHelper.UserContext.getUsrName();
         tvWelcome.setText("Witaj "+ welcome +"!");
 
         btnInhManag.setOnClickListener(new View.OnClickListener() {

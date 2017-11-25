@@ -24,9 +24,10 @@ import java.net.URL;
 public class LoginActivity extends AppCompatActivity {
 
     public static EditText etLogin, etPassword;
-    private String wait = "Proszę czekać...";
+    /*private String wait = "Proszę czekać...";
     private String error = "Niepoprawne dane logowania. Spróbuj ponownie.";
-    private String success = "Pomyślnie zalogowano.";
+    private String success = "Pomyślnie zalogowano.";*/
+    public String message;
     public static boolean checker= false;
 
     @Override
@@ -39,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         TextView tvPassForgotten = (TextView) findViewById(R.id.tvPassForgotten);
 
+
+        //odbieranie
         //login
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,12 +49,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 ConnectionProcesses login = new ConnectionProcesses();
                 login.execute(etLogin.getText().toString(),etPassword.getText().toString());
-                Toast.makeText(getApplicationContext(),wait,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),wait,Toast.LENGTH_SHORT).show();
                 if(!checker){
-                    Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                 }
                 else if (checker){
-                    Toast.makeText(getApplicationContext(),success,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                     Intent logger = new Intent(LoginActivity.this, MenuActivity.class);
                     //logger.putExtra();
                     startActivity(logger);
@@ -78,15 +81,21 @@ public class LoginActivity extends AppCompatActivity {
 
 
         private String data;
-
+        private int response;
         @Override
         protected String doInBackground(String... params) {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
             try {
+
                 //connecting the api
-                URL url = new URL("http://detinhabapi.aspnet.pl/api/user/" + params[0] + "/" + params[1]);
+                URL url = new URL("http://detinhabapi.aspnet.pl/api/login/");
                 connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("login", params[0]);
+                connection.setRequestProperty("password", params[1]);
+                response = connection.getResponseCode();
+                message = connection.getHeaderField("message");
                 InputStream stream = connection.getInputStream();
                 reader = new BufferedReader(new InputStreamReader(stream));
 
@@ -101,6 +110,21 @@ public class LoginActivity extends AppCompatActivity {
 
                 data = buffer.toString();
 
+                /*InputStream stream2 = connection.getHeaderField("message");
+                reader = new BufferedReader(new InputStreamReader(stream));
+
+                //buffer to save the json data
+                StringBuffer buffer2 = new StringBuffer();
+                String line2 = "";
+
+                //filling the buffer with data
+                while ((line2 = reader.readLine()) != null) {
+                    buffer2.append(line2);
+                }
+
+                message = buffer.toString();*/
+
+
                 //making a json object from loaded data + parsing it to a UserModel
                 JSONObject dataObject = new JSONObject(data);
                 AppHelper.UserContext = new UserModel();
@@ -111,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                 AppHelper.UserContext.setUsrSurname(dataObject.getString("Surname"));
                 AppHelper.UserContext.setUsrMail(dataObject.getString("Mail"));
                 AppHelper.UserContext.setUsPermission(dataObject.getInt("PermissionFlag"));
+
 
                 return data;
 
@@ -140,8 +165,13 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            if(data!=null){
+            if(response == 200){
                 checker = true;
+
+            }
+            else if (response == 400){
+                checker = false;
+
             }
 
         }

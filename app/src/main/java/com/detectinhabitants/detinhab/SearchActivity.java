@@ -73,6 +73,7 @@ public class SearchActivity extends AppCompatActivity {
                     }
                     n++;
                 }
+                n = 0;
             }
         });
     }
@@ -150,7 +151,7 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-    public class HabitantAdapter extends ArrayAdapter implements Filterable {
+    public class HabitantAdapter extends ArrayAdapter {
 
         private List<HabitantModel> habitantList;
         private int resource;
@@ -176,7 +177,8 @@ public class SearchActivity extends AppCompatActivity {
             TextView tvHabitantItem;
             tvHabitantItem = convertView.findViewById(R.id.tvHabitants);
 
-            tvHabitantItem.setText(habitantList.get(position).getHabName() + " " + habitantList.get(position).getHabSurname());
+            tvHabitantItem.setText( habitantList.get(position).getHabName() +
+                                    " " + habitantList.get(position).getHabSurname());
 
             return convertView;
         }

@@ -70,3 +70,4 @@ public class UserModel {
         this.usPermission = usPermission;
     }
 }
+

@@ -24,9 +24,10 @@ import java.net.URL;
 public class LoginActivity extends AppCompatActivity {
 
     public static EditText etLogin, etPassword;
-    private String wait = "Proszę czekać...";
+    /*private String wait = "Proszę czekać...";
     private String error = "Niepoprawne dane logowania. Spróbuj ponownie.";
-    private String success = "Pomyślnie zalogowano.";
+    private String success = "Pomyślnie zalogowano.";*/
+    public String message;
     public static boolean checker= false;
 
     @Override
@@ -39,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         TextView tvPassForgotten = (TextView) findViewById(R.id.tvPassForgotten);
 
+
+        //odbieranie
         //login
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,13 +49,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 ConnectionProcesses login = new ConnectionProcesses();
                 login.execute(etLogin.getText().toString(),etPassword.getText().toString());
-                Toast.makeText(getApplicationContext(),wait,Toast.LENGTH_SHORT).show();
-                if(checker == false){
-                    Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),wait,Toast.LENGTH_SHORT).show();
+                if(!checker){
+                    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                 }
-                else if (checker == true){
-                    Toast.makeText(getApplicationContext(),success,Toast.LENGTH_SHORT).show();
+                else if (checker){
+                    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                     Intent logger = new Intent(LoginActivity.this, MenuActivity.class);
+                    //logger.putExtra();
                     startActivity(logger);
 
                 }
@@ -77,15 +81,21 @@ public class LoginActivity extends AppCompatActivity {
 
 
         private String data;
-
+        private int response;
         @Override
         protected String doInBackground(String... params) {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
             try {
+
                 //connecting the api
-                URL url = new URL("http://detinhabapi.aspnet.pl/api/user/" + params[0] + "/" + params[1]);
+                URL url = new URL("http://detinhabapi.aspnet.pl/api/login/");
                 connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("login", params[0]);
+                connection.setRequestProperty("password", params[1]);
+                response = connection.getResponseCode();
+                message = connection.getHeaderField("message");
                 InputStream stream = connection.getInputStream();
                 reader = new BufferedReader(new InputStreamReader(stream));
 
@@ -100,23 +110,41 @@ public class LoginActivity extends AppCompatActivity {
 
                 data = buffer.toString();
 
+                /*InputStream stream2 = connection.getHeaderField("message");
+                reader = new BufferedReader(new InputStreamReader(stream));
+
+                //buffer to save the json data
+                StringBuffer buffer2 = new StringBuffer();
+                String line2 = "";
+
+                //filling the buffer with data
+                while ((line2 = reader.readLine()) != null) {
+                    buffer2.append(line2);
+                }
+
+                message = buffer.toString();*/
+
+
                 //making a json object from loaded data + parsing it to a UserModel
                 JSONObject dataObject = new JSONObject(data);
-                UserModel account = new UserModel();
-                account.setUsrID(dataObject.getInt("UniqueID"));
-                account.setUsrLogin(dataObject.getString("Login"));
-                account.setUsrPassword(dataObject.getString("Password"));
-                account.setUsrName(dataObject.getString("Name"));
-                account.setUsrSurname(dataObject.getString("Surname"));
-                account.setUsrMail(dataObject.getString("Mail"));
-                account.setUsPermission(dataObject.getInt("PermissionFlag"));
+                AppHelper.UserContext = new UserModel();
+                AppHelper.UserContext.setUsrID(dataObject.getInt("UniqueID"));
+                AppHelper.UserContext.setUsrLogin(dataObject.getString("Login"));
+                AppHelper.UserContext.setUsrPassword(dataObject.getString("Password"));
+                AppHelper.UserContext.setUsrName(dataObject.getString("Name"));
+                AppHelper.UserContext.setUsrSurname(dataObject.getString("Surname"));
+                AppHelper.UserContext.setUsrMail(dataObject.getString("Mail"));
+                AppHelper.UserContext.setUsPermission(dataObject.getInt("PermissionFlag"));
 
-            return data;
+
+                return data;
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
+
             } catch (IOException e) {
                 e.printStackTrace();
+
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
@@ -137,8 +165,13 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            if(data!=null){
+            if(response == 200){
                 checker = true;
+
+            }
+            else if (response == 400){
+                checker = false;
+
             }
 
         }

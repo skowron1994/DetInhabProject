@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -39,11 +40,9 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
 
     private ListView lvInhabitants;
-    private int length, n=0;
+    private int length, n = 0;
     private Button btnBack;
     private EditText etSearchInhab;
-
-
 
 
     @Override
@@ -53,114 +52,74 @@ public class SearchActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         etSearchInhab = (EditText) findViewById(R.id.etSearchInhab);
         btnBack = (Button) findViewById(R.id.btnBack);
-        lvInhabitants = (ListView)findViewById(R.id.lvInhabitants);
-
-        //search from list of habitants while writing
-        /*etSearchInhab.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                length = s.toString().length();
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.toString().equals("")){
-
-                }
-                else{
-                    searchPhrase(s.toString());
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(s.toString().length() < length){
-
-                    for(String item: inhabitants){
-                        if(!item.toLowerCase().contains(s.toString().toLowerCase())){
-                            ihList.remove(item);
-                        }
-                    }
-                }
-            }
-        });*/
+        lvInhabitants = (ListView) findViewById(R.id.lvInhabitants);
+        new JsonTask().execute();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DataList().execute();
-                //finish();
+                finish();
             }
         });
 
         lvInhabitants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                while(n<=position){
-                    if(position==n){
-                        Intent logger = new Intent(SearchActivity.this,ManageChosenActivity.class);
+                while (n <= position) {
+                    if (position == n) {
+                        Intent logger = new Intent(SearchActivity.this, ManageChosenActivity.class);
                         startActivity(logger);
 
                     }
                     n++;
                 }
+                n = 0;
             }
         });
     }
 
-    /*private void searchPhrase(String s) {
-        for(String item:){
-            if(!item.toLowerCase().contains(s.toString().toLowerCase())){
-            }
-        }
-    }*/
-
     //FETCHING DATA FROM DATABASE AND PARSING IT TO LISTVIEW
-    public class DataList extends AsyncTask<String, String, List<HabitantModel>> {
+    public class JsonTask extends AsyncTask<String, String, List<HabitantModel>> {
 
-        private String data;
+        String data;
 
         @Override
         protected List<HabitantModel> doInBackground(String... params) {
-            HttpURLConnection connection = null;
             BufferedReader reader = null;
+            HttpURLConnection connect = null;
+
             try {
-                //connecting the api
-                URL url = new URL("http://detinhabwebapi.azurewebsites.net/api/habitant/");
-                connection = (HttpURLConnection) url.openConnection();
-                InputStream stream = connection.getInputStream();
+                URL url = new URL("http://detinhabapi.aspnet.pl/api/habitiant");
+                connect = (HttpURLConnection) url.openConnection();
+                connect.connect();
+
+                InputStream stream = connect.getInputStream();
                 reader = new BufferedReader(new InputStreamReader(stream));
-
-                //buffer to save the json data
-                StringBuffer buffer = new StringBuffer();
                 String line = "";
+                StringBuffer buffer = new StringBuffer();
 
-                //filling the buffer with data
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
 
                 data = buffer.toString();
+                JSONArray habArray = new JSONArray(data);
 
-                //making a json object from loaded data + parsing it to a HabitantModel
-                JSONObject dataObject = new JSONObject(data);
 
-                JSONArray habList = dataObject.getJSONArray("ArrayOfHabitiant");
+                List habList = new ArrayList<HabitantModel>();
+                for (int i = 0; i < habArray.length(); i++) {
 
-                List<HabitantModel> habitantsList = new ArrayList<>();
+                    HabitantModel model = new HabitantModel();
 
-                for(int i=0; i<habList.length(); i++){
-                    JSONObject hab = habList.getJSONObject(i);
-                    HabitantModel habitant = new HabitantModel();
-                    habitant.setHabName(hab.getString("Name"));
-                    habitant.setHabSurname(hab.getString("Surname"));
-                    habitant.setRoomNumber(hab.getInt("RoomNumber"));
-                    habitantsList.add(habitant);
+                    JSONObject arrObject = habArray.getJSONObject(i);
+
+                    model.setHabName(arrObject.getString("Name"));
+                    model.setHabSurname(arrObject.getString("Surname"));
+                    model.setRoomNumber(arrObject.getInt("RoomNumber"));
+                    habList.add(model);
                 }
 
-                return habitantsList;
-
+                return habList;
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -169,55 +128,59 @@ public class SearchActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
-                if (connection != null) {
-                    connection.disconnect();
+                if (connect != null) {
+                    connect.disconnect();
                 }
-                if (reader != null) {
-                    try {
+                try {
+                    if (reader != null) {
                         reader.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
+
             return null;
         }
 
         @Override
-        protected void onPostExecute(List<HabitantModel> result) {
-            super.onPostExecute(result);
-            HabitantAdapter adapter = new HabitantAdapter(getApplicationContext(), R.layout.habitants, result);
+        protected void onPostExecute(List<HabitantModel> s) {
+            super.onPostExecute(s);
+            HabitantAdapter adapter = new HabitantAdapter(getApplicationContext(), R.layout.habitants, s);
             lvInhabitants.setAdapter(adapter);
         }
+    }
 
-        public class HabitantAdapter extends ArrayAdapter {
+    public class HabitantAdapter extends ArrayAdapter {
 
-            private int resource;
-            private List<HabitantModel> habitantList;
-            private LayoutInflater inflater;
+        private List<HabitantModel> habitantList;
+        private int resource;
+        private LayoutInflater inflater;
 
-            public HabitantAdapter(Context context, int resource, List<HabitantModel> objects) {
-                super(context, resource, objects);
-                habitantList = objects;
-                this.resource = resource;
-                inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        public HabitantAdapter (@NonNull Context context, @LayoutRes int resource, @NonNull List<HabitantModel> objects) {
+            super(context, resource, objects);
+
+            habitantList = objects;
+            this.resource = resource;
+            inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+            if (convertView == null) {
+                convertView = inflater.inflate(resource, null);
             }
 
-            @NonNull
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
+            TextView tvHabitantItem;
+            tvHabitantItem = convertView.findViewById(R.id.tvHabitants);
 
-                if(convertView == null){
-                    convertView = inflater.inflate(resource, null);
-                }
+            tvHabitantItem.setText( habitantList.get(position).getHabName() +
+                                    " " + habitantList.get(position).getHabSurname());
 
-                TextView habNameSurname;
-                habNameSurname = (TextView)findViewById(R.id.tvHabitants);
-                habNameSurname.setText(habitantList.get(position).getHabName()+" "+habitantList.get(position).getHabSurname());
-                return convertView;
-            }
+            return convertView;
         }
     }
 }
-
-

@@ -4,62 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginshadow"
+    android:background="@drawable/bg"
     tools:context="com.detectinhabitants.detinhab.LoginActivity">
 
     <ImageView
         android:id="@+id/imgDetinhab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/detinhab"
-        android:layout_marginTop="37dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/etPassword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="52dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/logodet"
+        android:contentDescription="Logo aplikacji"/>
 
     <EditText
         android:id="@+id/etLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="190dp"
+        android:ems="12"
+        android:hint="Wprowadź login lub email"
         android:inputType="textPersonName"
-        android:layout_marginTop="37dp"
-        android:layout_below="@+id/imgDetinhab"
-        android:layout_centerHorizontal="true"
-        android:hint="Nazwa użytkownika"
-        />
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Hasło"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/etLogin"
-        android:layout_alignLeft="@+id/etLogin"
-        android:layout_alignStart="@+id/etLogin"
-        />
+        android:ems="12"
+        android:hint="Wprowadź hasło"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Zaloguj"
+        android:layout_alignEnd="@+id/tvPassForgotten"
+        android:layout_alignLeft="@+id/tvPassForgotten"
+        android:layout_alignRight="@+id/tvPassForgotten"
+        android:layout_alignStart="@+id/tvPassForgotten"
         android:layout_below="@+id/etPassword"
-        android:layout_centerHorizontal="true"
-        />
+        android:text="Zaloguj"
+        android:textSize="16dp"/>
 
     <TextView
         android:id="@+id/tvPassForgotten"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Zapomniałeś hasła?"
-        android:textColor="#FFFFFF"
         android:layout_below="@+id/btnLogin"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="Zapomniałeś hasła?"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="italic"
+        android:textSize="15dp"
+        />
 
 
 </RelativeLayout>

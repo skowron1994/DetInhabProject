@@ -40,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         TextView tvPassForgotten = (TextView) findViewById(R.id.tvPassForgotten);
 
+        etLogin.setText("admin");
+        etPassword.setText("admin");
 
         //odbieranie
         //login

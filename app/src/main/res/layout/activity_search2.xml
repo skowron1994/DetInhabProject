@@ -15,6 +15,16 @@
         android:layout_alignRight="@+id/lvGuests"
         android:layout_alignEnd="@+id/lvGuests" />
 
+    <TextView
+        android:id="@+id/tvHintGst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSrchGst"
+        android:layout_alignStart="@+id/etSrchGst"
+        android:layout_alignTop="@+id/imgDetinhab4"
+        android:text="Wpisz imię lub nazwisko gościa:"
+        android:textColor="#FFFFFF" />
+
     <EditText
         android:id="@+id/etSrchGst"
         android:layout_width="wrap_content"
@@ -48,16 +58,6 @@
         android:width="250dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/tvHintGst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etSrchGst"
-        android:layout_alignStart="@+id/etSrchGst"
-        android:layout_alignTop="@+id/imgDetinhab4"
-        android:text="Wpisz imię lub nazwisko gościa:"
-        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/tvAddGst"

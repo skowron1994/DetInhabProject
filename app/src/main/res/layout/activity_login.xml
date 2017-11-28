@@ -4,20 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/loginshadow"
     tools:context="com.detectinhabitants.detinhab.LoginActivity">
 
     <ImageView
         android:id="@+id/imgDetinhab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etPassword"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="52dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/logodet"
-        android:contentDescription="Logo aplikacji"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:contentDescription="Logo aplikacji"
+        app:srcCompat="@drawable/detinhab" />
 
     <EditText
         android:id="@+id/etLogin"
@@ -76,7 +74,6 @@
         android:text="Zapomniałeś hasła?"
         android:textAllCaps="false"
         android:textColor="@android:color/background_dark"
-        android:textStyle="italic"
         android:textSize="15dp"
         />
 

@@ -1,231 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loginshadow"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView
-        android:id="@+id/imgDetinhab"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/detinhab"
-        android:layout_alignBottom="@+id/tvHabSurname"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/imgDetinhab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/detinhab" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tvHabInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Dane dla mieszkańca:"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"/>
+            android:id="@+id/tvHabName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Habitant name"
+            android:textColor="#FFFF00"
+            android:textSize="20dp"/>
 
     <TextView
-        android:id="@+id/tvHabName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Habitant name"
-        android:layout_below="@+id/tvHabInfo"
-        android:layout_alignLeft="@+id/tvHabInfo"
-        android:layout_alignStart="@+id/tvHabInfo"
-        android:textColor="#FFFF00"
-        android:textSize="20dp"/>
+            android:id="@+id/tvHabSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Habitant Surname"
+            android:textColor="#FFFF00"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"/>
 
-    <TextView
-        android:id="@+id/tvHabSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Habitant Surname"
-        android:textColor="#FFFF00"
-        android:textSize="20dp"
-        android:layout_below="@+id/tvHabName"
-        android:layout_alignLeft="@+id/tvHabName"
-        android:layout_alignStart="@+id/tvHabName" />
 
-    <TextView
-        android:id="@+id/tvHabAgeInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Wiek: "
-        android:textSize="15dp"
-        android:textColor="#FFFFFF"
-        android:layout_below="@+id/tvHabSurname"
-        android:layout_alignLeft="@+id/tvHabSurname"
-        android:layout_alignStart="@+id/tvHabSurname" />
 
-    <TextView
-        android:id="@+id/tvRoomInfo"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Numer pokoju:"
-        android:textSize="15dp"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/tvHabAgeInfo"
-        android:layout_alignLeft="@+id/tvHabAgeInfo"
-        android:layout_alignStart="@+id/tvHabAgeInfo" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvConsInfo"
-        android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/tvHabAgeInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wiek: "
+            android:textSize="15dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvRoomInfo"
+            android:text="Age"
+            android:layout_marginLeft="170dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvRoomInfo"
-        android:layout_alignStart="@+id/tvRoomInfo"
-        android:layout_below="@+id/tvRoomInfo"
-        android:text="Prawny opiekun:"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="5dp"
-        android:textSize="15dp" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvConsContactInfo"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvRoomInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numer pokoju:"
+            android:textSize="15dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"/>
+
+
+        <TextView
+            android:id="@+id/tvRoomNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Room number"
+            android:layout_marginLeft="112dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tvConsInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prawny opiekun:"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="5dp"
+            android:textSize="15dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/tvCounsuelor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Counsuelor"
+            android:layout_marginLeft="100dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvConsInfo"
-        android:layout_alignStart="@+id/tvConsInfo"
-        android:layout_below="@+id/tvConsInfo"
-        android:layout_marginTop="5dp"
-        android:text="Kontakt do opiekuna:"
-        android:textSize="15dp"
-        android:textColor="#FFFFFF"
-        />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvMaxReturnTimeInfo"
-        android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/tvConsContactInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kontakt do opiekuna:"
+            android:textSize="15dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:id="@+id/tvCounContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact"
+            android:layout_marginLeft="68dp"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvConsContactInfo"
-        android:layout_alignStart="@+id/tvConsContactInfo"
-        android:layout_below="@+id/tvConsContactInfo"
-        android:layout_marginTop="5dp"
-        android:text="Maksymalny czas powrotu:"
-        android:textSize="15dp"
-        android:textColor="#FFFFFF"
-        />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvLastGuestInfo"
-        android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/tvMaxReturnTimeInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Maksymalny czas powrotu:"
+            android:textSize="15dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FFFFFF"
+            />
+
+        <TextView
+            android:id="@+id/tvMaxReturnTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return Time"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="5dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvMaxReturnTimeInfo"
-        android:layout_alignStart="@+id/tvMaxReturnTimeInfo"
-        android:layout_below="@+id/tvMaxReturnTimeInfo"
-        android:layout_marginTop="5dp"
-        android:text="Ostatni gość:"
-        android:textSize="15dp"
-        android:textColor="#FFFFFF"/>
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvStatusInfo"
-        android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/tvLastGuestInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Ostatni gość:"
+            android:textSize="15dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/tvLastGuest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last guest"
+            android:layout_marginLeft="121dp"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Status:"
-        android:layout_below="@+id/tvLastGuestInfo"
-        android:layout_alignLeft="@+id/tvLastGuestInfo"
-        android:layout_alignStart="@+id/tvLastGuestInfo"
-        android:textSize="15dp"
-        android:textColor="#FFFFFF"/>
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvAdInfo"
-        android:layout_width="wrap_content"
+
+
+        <TextView
+
+            android:id="@+id/tvStatusInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Status:"
+            android:textSize="15dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"/>
+
+        <Spinner
+            android:id="@+id/spStatusList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvStatusInfo"
-        android:layout_alignStart="@+id/tvStatusInfo"
-        android:layout_below="@+id/tvStatusInfo"
-        android:layout_marginTop="5dp"
-        android:text="Adnotacje:"
-        android:textSize="15dp"
-        android:textColor="#FFFFFF"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnChange"
-        android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/tvAdInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Adnotacje:"
+            android:textSize="15dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tvAdnotations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adnotations"
+            android:layout_marginLeft="138dp"
+            android:layout_marginTop="5dp"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Status"
-        android:width="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/btnCancel"
-        android:layout_toStartOf="@+id/btnCancel"
-        />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Powrót"
-        android:width="100dp"
-        android:layout_alignBaseline="@+id/btnChange"
-        android:layout_alignBottom="@+id/btnChange"
-        android:layout_alignLeft="@+id/imgDetinhab"
-        android:layout_alignStart="@+id/imgDetinhab"
-        />
 
-    <TextView
-        android:id="@+id/tvAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age"
-        android:layout_above="@+id/tvRoomInfo"
-        android:layout_toRightOf="@+id/tvHabInfo"
-        android:layout_toEndOf="@+id/tvHabInfo"
-        android:layout_marginLeft="20dp"
-        />
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="100dp"
+            android:text="Powrót"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"/>
 
-    <TextView
-        android:id="@+id/tvRoomNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tvConsInfo"
-        android:layout_alignLeft="@+id/tvAge"
-        android:layout_alignStart="@+id/tvAge"
-        android:text="Room number"/>
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="100dp"
+            android:text="Zapisz"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"/>
 
-    <TextView
-        android:id="@+id/tvCounsuelor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tvConsContactInfo"
-        android:layout_alignLeft="@+id/tvRoomNumber"
-        android:layout_alignStart="@+id/tvRoomNumber"
-        android:text="Counsuelor"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvCounContact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tvMaxReturnTimeInfo"
-        android:layout_alignLeft="@+id/tvCounsuelor"
-        android:layout_alignStart="@+id/tvCounsuelor"
-        android:text="Contact" />
-
-    <TextView
-        android:id="@+id/tvMaxReturnTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Return Time"
-        android:layout_alignBottom="@+id/tvMaxReturnTimeInfo"
-        android:layout_alignLeft="@+id/tvCounContact"
-        android:layout_alignStart="@+id/tvCounContact" />
-
-    <TextView
-        android:id="@+id/tvLastGuest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvLastGuestInfo"
-        android:layout_alignLeft="@+id/tvMaxReturnTime"
-        android:layout_alignStart="@+id/tvMaxReturnTime"
-        android:text="Last guest" />
-
-</RelativeLayout>
+</LinearLayout>

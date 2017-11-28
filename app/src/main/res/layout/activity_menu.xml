@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/loginshadow"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
     <Button
@@ -38,7 +38,7 @@
                 android:id="@+id/imgDetinhab2"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:srcCompat="@drawable/logodet" />
+                app:srcCompat="@drawable/detinhab" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="24sp"
-                    android:textStyle="bold|italic"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

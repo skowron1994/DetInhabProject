@@ -1,6 +1,7 @@
 package com.detectinhabitants.detinhab;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,7 @@ public class ManageChosenActivity extends AppCompatActivity {
     private TextView habAdnotations;
     private Button btnSave, btnBack;
     private Spinner statusListSpinner;
+    String idChosen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +55,9 @@ public class ManageChosenActivity extends AppCompatActivity {
         btnSave.setVisibility(View.GONE);
         btnBack = (Button) findViewById(R.id.btnCancel);
         statusListSpinner = (Spinner)findViewById(R.id.spStatusList);
-        new JsonTask2().execute();
-
+        Bundle intent = getIntent().getExtras();
+        idChosen = String.valueOf(intent.getInt("id"));
+        new JsonTask2().execute(idChosen);
 
         //list of statuses, controlled in listener
         String[] statusList = {"W pokoju", "Opuścił placówkę", "Wyjechał na weekend", "Na zajęciach pozalekcyjnych", "Spóźnia się"};
@@ -111,7 +114,7 @@ public class ManageChosenActivity extends AppCompatActivity {
         protected HabitantModel doInBackground(String... strings) {
 
             try {
-                URL url = new URL("http://detinhabapi.aspnet.pl/api/habitiant/1");
+                URL url = new URL("http://detinhabapi.aspnet.pl/api/habitiant/"+strings[0]);
                 connect = (HttpURLConnection)url.openConnection();
                 connect.connect();
                 connect.setRequestMethod("GET");

@@ -68,6 +68,7 @@ public class SearchActivity extends AppCompatActivity {
                 while (n <= position) {
                     if (position == n) {
                         Intent logger = new Intent(SearchActivity.this, ManageChosenActivity.class);
+                        logger.putExtra("id", n+1);
                         startActivity(logger);
 
                     }
@@ -178,7 +179,7 @@ public class SearchActivity extends AppCompatActivity {
             tvHabitantItem = convertView.findViewById(R.id.tvHabitants);
 
             tvHabitantItem.setText( habitantList.get(position).getHabName() +
-                                    " " + habitantList.get(position).getHabSurname());
+                                    " " + habitantList.get(position).getHabSurname() + " Pokój: " + String.valueOf(habitantList.get(position).getRoomNumber()));
 
             return convertView;
         }

@@ -135,7 +135,7 @@ public class ManageChosenActivity extends AppCompatActivity {
                 model.setHabName(object.getString("Name"));
                 model.setHabSurname(object.getString("Surname"));
                 model.setRoomNumber(object.getInt("RoomNumber"));
-
+                String hehexd = "hehexd";
                 return model;
 
             } catch (MalformedURLException e) {

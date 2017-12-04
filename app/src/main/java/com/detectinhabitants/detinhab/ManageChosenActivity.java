@@ -51,9 +51,6 @@ public class ManageChosenActivity extends AppCompatActivity {
         habContact = (TextView) findViewById(R.id.tvCounContact);
         habReturnTime = (TextView) findViewById(R.id.tvMaxReturnTime);
         habLastGuest = (TextView) findViewById(R.id.tvLastGuest);
-        btnSave = (Button) findViewById(R.id.btnSave);
-        btnSave.setVisibility(View.GONE);
-        btnBack = (Button) findViewById(R.id.btnCancel);
         statusListSpinner = (Spinner)findViewById(R.id.spStatusList);
         Bundle intent = getIntent().getExtras();
         idChosen = String.valueOf(intent.getInt("id"));
@@ -71,30 +68,17 @@ public class ManageChosenActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int id, long position) {
-                btnSave.setVisibility(View.VISIBLE);
-                btnSave.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
 
-                        //TODO request controller
-                    }
-                });
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
 
-                btnSave.setVisibility(View.GONE);
+
             }
         });
 
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
 
 
@@ -169,177 +153,5 @@ public class ManageChosenActivity extends AppCompatActivity {
 
         }
     }
-    /*public class JsonTask extends AsyncTask<String, String, String> {
-
-        String data, habName, habSurname;
-        int habRoomNumber;
-        HabitantModel model;
-
-        @Override
-        protected String doInBackground(String... params) {
-            BufferedReader reader = null;
-            HttpURLConnection connect = null;
-
-            try {
-                URL url = new URL("http://detinhabapi.aspnet.pl/api/habitiant/1");
-                connect = (HttpURLConnection) url.openConnection();
-                connect.connect();
-
-                InputStream stream = connect.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(stream));
-                String line = "";
-                StringBuffer buffer = new StringBuffer();
-
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line);
-                }
-
-                data = buffer.toString();
-                JSONObject habObject = new JSONObject(data);
-
-
-
-                habName = (habObject.getString("Name"));
-                habSurname = (habObject.getString("Surname"));
-                habRoomNumber = (habObject.getInt("RoomNumber"));
-                //model.setHabStatus(habObject.getString("Status").toString());
-
-
-                return data;
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } finally {
-                if (connect != null) {
-                    connect.disconnect();
-                }
-                try {
-                    if (reader != null) {
-                        reader.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            ManageChosenActivity.habName.setText(habName);
-            ManageChosenActivity.habSurname.setText(habSurname);
-            ManageChosenActivity.habRoom.setText(habRoomNumber);
-        }
-    }
-*/
-    /*public class JsonTask extends AsyncTask<String, String, String> {
-
-        String data, responseChecker;
-        int response;
-
-        @Override
-        protected String doInBackground(String... params) {
-            BufferedReader reader = null;
-            HttpURLConnection connect = null;
-
-            try {
-                URL url = new URL("http://detinhabapi.aspnet.pl/api/habitiant/1");
-                connect = (HttpURLConnection) url.openConnection();
-                *//*connect.setRequestMethod("POST");
-                connect.setRequestProperty("UserContext", "{" +
-                        "\"UniqueID\": \"5\"," +
-                        "\"Name\": \"Ryszard\"," +
-                        "\"Surname\": \"xxxC\"," +
-                        "\"Login\": \"admin\"," +
-                        "\"Password\": \"admin\"," +
-                        "\"Mail\": \"piotrsiemieniuk@outlook.com\"," +
-                        "\"PermissionFlag\": 5" +
-                        "}");*//*
-                connect.connect();
-                response = connect.getResponseCode();
-                responseChecker = connect.getResponseMessage();
-
-                InputStream stream = connect.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(stream));
-                String line = "";
-                StringBuffer buffer = new StringBuffer();
-
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line);
-                }
-
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line);
-                }
-
-                data = buffer.toString();
-
-                JSONObject dataObject = new JSONObject(data);
-                AppHelper.HabitantContext =  new HabitantModel();
-                AppHelper.HabitantContext.setHabName(dataObject.getString("Name"));
-                AppHelper.HabitantContext.setHabSurname(dataObject.getString("Surname"));
-                //AppHelper.HabitantContext.setHabConsuelor(dataObject.getString("Counsuelor"));
-                //AppHelper.HabitantContext.setHabAge(dataObject.getInt("Age"));
-                AppHelper.HabitantContext.setRoomNumber(dataObject.getInt("RoomNumber"));
-                *//*AppHelper.HabitantContext.setConsContact(dataObject.getString("ConsContact"));
-                AppHelper.HabitantContext.setMaxReturnTime(dataObject.getString("MaxReturnTime"));
-                AppHelper.HabitantContext.setLastGuest(dataObject.getString("LastGuest"));*//*
-                AppHelper.HabitantContext.setHabStatus(dataObject.getString("Status"));
-                //AppHelper.HabitantContext.setAdnotations(dataObject.getString("Adnotations"));
-
-
-
-
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }  catch (JSONException e) {
-                e.printStackTrace();
-            } finally {
-                if (connect != null) {
-                    connect.disconnect();
-                }
-                try {
-                    if (reader != null) {
-                        reader.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            if(response == 200){
-                habName.setText(AppHelper.HabitantContext.getHabName());
-                habSurname.setText(AppHelper.HabitantContext.getHabSurname());
-                //habAge.setText(AppHelper.HabitantContext.getHabAge());
-                habRoom.setText(AppHelper.HabitantContext.getRoomNumber());
-                *//*habCounsuelor.setText(AppHelper.HabitantContext.getHabConsuelor());
-                habContact.setText(AppHelper.HabitantContext.getConsContact());
-                habReturnTime.setText(AppHelper.HabitantContext.getMaxReturnTime());
-                habLastGuest.setText(AppHelper.HabitantContext.getLastGuest());*//*
-                habStatus.setText(AppHelper.HabitantContext.getHabStatus());
-                //habAdnotations.setText(AppHelper.HabitantContext.getAdnotations());
-            }
-            else{
-                Toast.makeText(getApplicationContext(), responseChecker, Toast.LENGTH_SHORT).show();
-            }
-
-
-        }
-    }*/
 }
 

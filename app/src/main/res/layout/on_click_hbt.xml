@@ -9,274 +9,296 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
 
         <ImageView
-            android:id="@+id/imgDetinhab"
-            android:layout_width="match_parent"
+            android:id="@+id/imageView"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/detinhab" />
+            android:padding="5dp"
+
+            app:srcCompat="@drawable/inhabitants"/>
+
+        <TextView
+            android:id="@+id/tvHabName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Habitant name"
+            android:textColor="#000000"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tvHabSurname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Habitant Surname"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:textColor="#000000"
+            android:textSize="20dp" />
 
     </LinearLayout>
 
-    <TextView
-            android:id="@+id/tvHabName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Habitant name"
-            android:textColor="#FFFF00"
-            android:textSize="20dp"/>
-
-    <TextView
-            android:id="@+id/tvHabSurname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Habitant Surname"
-            android:textColor="#FFFF00"
-            android:textSize="20dp"
-            android:layout_marginBottom="20dp"/>
-
-
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:layout_height="240dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="#66FFFFFF">
 
         <TextView
             android:id="@+id/tvHabAgeInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:text="Wiek: "
-            android:textSize="15dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#000000"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/tvAge"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/tvRoomInfo"
-            android:text="Age"
-            android:layout_marginLeft="170dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Age" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="35dp"
+            android:background="#000000" />
 
         <TextView
             android:id="@+id/tvRoomInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="45dp"
             android:text="Numer pokoju:"
-            android:textSize="15dp"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"/>
-
+            android:textColor="#000000"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/tvRoomNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Room number"
-            android:layout_marginLeft="112dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="45dp"
+            android:text="Room number" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="65dp"
+            android:background="#000000" />
 
 
         <TextView
             android:id="@+id/tvConsInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="75dp"
             android:text="Prawny opiekun:"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="5dp"
-            android:textSize="15dp"
-            android:layout_marginLeft="10dp"/>
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
 
         <TextView
             android:id="@+id/tvCounsuelor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Counsuelor"
-            android:layout_marginLeft="100dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="75dp"
+            android:text="Counsuelor" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        <View
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="95dp"
+            android:background="#000000" />
 
         <TextView
             android:id="@+id/tvConsContactInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="105dp"
             android:text="Kontakt do opiekuna:"
-            android:textSize="15dp"
-            android:textColor="#FFFFFF"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            />
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
         <TextView
             android:id="@+id/tvCounContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contact"
-            android:layout_marginLeft="68dp"
-            android:layout_marginTop="5dp"/>
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="105dp"
+            android:text="Contact" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        <View
+            android:id="@+id/line4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="125dp"
+            android:background="#000000" />
 
         <TextView
             android:id="@+id/tvMaxReturnTimeInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="135dp"
             android:text="Maksymalny czas powrotu:"
-            android:textSize="15dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF"
-            />
+            android:textColor="#000000"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/tvMaxReturnTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Return Time"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="5dp"
-            />
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="135dp"
+            android:text="Return Time" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        <View
+            android:id="@+id/line5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="155dp"
+            android:background="#000000" />
 
         <TextView
             android:id="@+id/tvLastGuestInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="165dp"
             android:text="Ostatni gość:"
-            android:textSize="15dp"
-            android:textColor="#FFFFFF"
-            android:layout_marginLeft="10dp"/>
+            android:textColor="#000000"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/tvLastGuest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last guest"
-            android:layout_marginLeft="121dp"
-            android:layout_marginTop="5dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="165dp"
+            android:text="Last guest" />
 
-    </LinearLayout>
+        <View
+            android:id="@+id/line6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="185dp"
+            android:background="#000000" />
 
-    <LinearLayout
+        <TextView
+            android:id="@+id/tvAdInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="195dp"
+            android:text="Adnotacje:"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tvAdnotations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="195dp"
+            android:text="Adnotations" />
+
+        <View
+            android:id="@+id/line7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tvAdInfo"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#000000" />
+
+    </RelativeLayout>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="15dp"/>
 
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#66ffffff">
 
         <TextView
 
             android:id="@+id/tvStatusInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:text="Status:"
             android:textSize="15dp"
-            android:textColor="#FFFFFF"
-            android:layout_marginLeft="10dp"/>
+            android:textColor="#000000"
+            android:layout_marginLeft="15dp"/>
 
-        <Spinner
-            android:id="@+id/spStatusList"
+        <View
+            android:id="@+id/line8"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="35dp"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/tvCurrentStatus"
+            android:text="Current Status"
+            android:textSize="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="50dp"
+            android:textStyle="italic|bold"
+            android:gravity="center_horizontal"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <Spinner
+        android:id="@+id/spStatusList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:id="@+id/tvAdInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Adnotacje:"
-            android:textSize="15dp"
-            android:textColor="#FFFFFF"
-            android:layout_marginLeft="10dp" />
-
-        <TextView
-            android:id="@+id/tvAdnotations"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Adnotations"
-            android:layout_marginLeft="138dp"
-            android:layout_marginTop="5dp"/>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:width="100dp"
-            android:text="Powrót"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"/>
-
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:width="100dp"
-            android:text="Zapisz"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"/>
-
-    </LinearLayout>
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="5dp"/>
 
 </LinearLayout>

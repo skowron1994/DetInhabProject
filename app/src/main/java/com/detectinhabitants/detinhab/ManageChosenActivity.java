@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,7 +53,7 @@ public class ManageChosenActivity extends AppCompatActivity {
         Bundle intent = getIntent().getExtras();
         idChosen = String.valueOf(intent.getInt("id"));
         new JsonTask2().execute(idChosen);
-        statusListSpinner.setVisibility(View.GONE);
+        statusListSpinner.setVisibility(View.INVISIBLE);
 
         statusChange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,10 +64,10 @@ public class ManageChosenActivity extends AppCompatActivity {
 
 
         //list of statuses, controlled in listener
-        String[] statusList = {"W pokoju", "Opuścił placówkę", "Wyjechał na weekend", "Na zajęciach pozalekcyjnych", "Spóźnia się"};
+        String[] statusList = {"Wybierz status", "W pokoju", "Opuścił placówkę", "Wyjechał na weekend", "Na zajęciach pozalekcyjnych", "Spóźnia się"};
         ArrayAdapter<String> status = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, statusList);
         statusListSpinner.setAdapter(status);
-
+        statusListSpinner.setSelection(0);
 
         //controller for items chosen from spinner of statuses - on click request gonna be sent to api and then actions performed in the app
         statusListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -75,16 +76,18 @@ public class ManageChosenActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int id, long position) {
                     switch((int)position){
-                        case 0:
+                        case 1:
                             habModel.setHabStatus(1);
+                            Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
                             changeStatus();
                             break;
-                        case 1:
+                        case 2:
                             habModel.setHabStatus(2);
+                            Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
                             changeStatus();
                             break;
                     }
-                    statusListSpinner.setVisibility(View.GONE);
+                    statusListSpinner.setVisibility(View.INVISIBLE);
             }
 
             @Override

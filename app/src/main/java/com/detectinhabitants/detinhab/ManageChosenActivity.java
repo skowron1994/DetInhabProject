@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,18 +26,12 @@ import java.net.URL;
 
 public class ManageChosenActivity extends AppCompatActivity {
 
-    private static TextView habName;
-    private static TextView habSurname;
-    private TextView habAge;
-    private static TextView habRoom;
-    private TextView habCounsuelor;
-    private TextView habContact;
-    private TextView habReturnTime;
-    private TextView habLastGuest;
-    private TextView habStatus;
-    private TextView habAdnotations;
+    private static TextView habName, habSurname, habRoom;
+    private TextView currentStatus, habCounsuelor, habContact, habReturnTime, habLastGuest, habStatus, habAdnotations, habAge;
     private Button btnSave, btnBack;
     private Spinner statusListSpinner;
+    private ImageButton statusChange;
+    HabitantModel habModel;
     String idChosen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +47,20 @@ public class ManageChosenActivity extends AppCompatActivity {
         habReturnTime = (TextView) findViewById(R.id.tvMaxReturnTime);
         habLastGuest = (TextView) findViewById(R.id.tvLastGuest);
         statusListSpinner = (Spinner)findViewById(R.id.spStatusList);
+        currentStatus = (TextView)findViewById(R.id.tvCurrentStatus);
+        statusChange = (ImageButton)findViewById(R.id.fbChangeStatus);
         Bundle intent = getIntent().getExtras();
         idChosen = String.valueOf(intent.getInt("id"));
         new JsonTask2().execute(idChosen);
+        statusListSpinner.setVisibility(View.GONE);
+
+        statusChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                statusListSpinner.setVisibility(View.VISIBLE);
+            }
+        });
+
 
         //list of statuses, controlled in listener
         String[] statusList = {"W pokoju", "Opuścił placówkę", "Wyjechał na weekend", "Na zajęciach pozalekcyjnych", "Spóźnia się"};
@@ -68,7 +74,17 @@ public class ManageChosenActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int id, long position) {
-
+                    switch((int)position){
+                        case 0:
+                            habModel.setHabStatus(1);
+                            changeStatus();
+                            break;
+                        case 1:
+                            habModel.setHabStatus(2);
+                            changeStatus();
+                            break;
+                    }
+                    statusListSpinner.setVisibility(View.GONE);
             }
 
             @Override
@@ -81,8 +97,16 @@ public class ManageChosenActivity extends AppCompatActivity {
 
 
 
+    }
 
 
+    private void changeStatus(){
+        if(habModel.getHabStatus()==1){
+            currentStatus.setText("W pokoju");
+        }
+        else if(habModel.getHabStatus()==2){
+            currentStatus.setText("Poza placówką");
+        }
 
     }
 
@@ -119,7 +143,7 @@ public class ManageChosenActivity extends AppCompatActivity {
                 model.setHabName(object.getString("Name"));
                 model.setHabSurname(object.getString("Surname"));
                 model.setRoomNumber(object.getInt("RoomNumber"));
-                String hehexd = "hehexd";
+                model.setHabStatus(object.getInt("Status"));
                 return model;
 
             } catch (MalformedURLException e) {
@@ -150,7 +174,13 @@ public class ManageChosenActivity extends AppCompatActivity {
             habName.setText(s.getHabName());
             habSurname.setText(s.getHabSurname());
             habRoom.setText(String.valueOf(s.getRoomNumber()));
-
+            habModel = s;
+            if(habModel.getHabStatus()==1){
+                currentStatus.setText("W pokoju");
+            }
+            else if(habModel.getHabStatus()==2){
+                currentStatus.setText("Poza placówką");
+            }
         }
     }
 }

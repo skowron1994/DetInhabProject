@@ -6,11 +6,11 @@ public class HabitantModel {
     private String habSurname;
     private int habAge;
     private int roomNumber;
+    private int habStatus;
     private String habConsuelor;
     private String consContact;
     private String maxReturnTime;
     private String lastGuest;
-    private String habStatus;
     private String adnotations;
 
     public String getHabName() {
@@ -77,11 +77,11 @@ public class HabitantModel {
         this.lastGuest = lastGuest;
     }
 
-    public String getHabStatus() {
+    public int getHabStatus() {
         return habStatus;
     }
 
-    public void setHabStatus(String habStatus) {
+    public void setHabStatus(int habStatus) {
         this.habStatus = habStatus;
     }
 

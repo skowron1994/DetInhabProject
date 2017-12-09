@@ -53,6 +53,7 @@ public class SearchActivity extends AppCompatActivity {
         etSearchInhab = (EditText) findViewById(R.id.etSearchInhab);
         btnBack = (Button) findViewById(R.id.btnBack);
         lvInhabitants = (ListView) findViewById(R.id.lvInhabitants);
+        etSearchInhab.setSelected(false);
         new JsonTask().execute();
 
         btnBack.setOnClickListener(new View.OnClickListener() {

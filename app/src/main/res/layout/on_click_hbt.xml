@@ -48,8 +48,8 @@
         android:layout_below="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"
         android:background="#66FFFFFF">
 
@@ -229,7 +229,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="195dp"
-            android:text="Adnotacje:"
+            android:text="Płeć:"
             android:textColor="#000000"
             android:textSize="15dp" />
 
@@ -240,7 +240,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:layout_marginTop="195dp"
-            android:text="Adnotations" />
+            android:text="Sex" />
 
         <View
             android:id="@+id/line7"
@@ -250,6 +250,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:background="#000000" />
+
 
 
 
@@ -264,9 +265,9 @@
     <RelativeLayout
         android:layout_below="@+id/view1"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:background="#66ffffff">
 
         <TextView
@@ -297,7 +298,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:textStyle="italic|bold"
-            android:gravity="center_horizontal|center_vertical"/>
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_marginBottom="16dp"/>
 
     </RelativeLayout>
 
@@ -314,8 +316,8 @@
         android:src="@drawable/edit"
          />
 
-    <Spinner
-        android:id="@+id/spStatusList"
+    <ListView
+        android:id="@+id/lvStatusList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

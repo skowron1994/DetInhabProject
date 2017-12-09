@@ -35,6 +35,8 @@ public class MenuActivity extends AppCompatActivity {
         Button btnInhManag = (Button) findViewById(R.id.btnInhManag);
         Button btnGstManag = (Button) findViewById(R.id.btnGstManag);
         Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        Button btnSettings = (Button) findViewById(R.id.btnSettings);
+        Button btnReports = (Button) findViewById(R.id.btnReport);
 
         String welcome = AppHelper.UserContext.getUsrName();
         tvWelcome.setText("Witaj "+ welcome +"!");
@@ -64,9 +66,92 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent settings = new Intent(MenuActivity.this, SettingsActivity.class);
+                startActivity(settings);
+            }
+        });
+
+        btnReports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent reports = new Intent(MenuActivity.this, ReportActivity.class);
+                startActivity(reports);
+            }
+        });
+
+
     }
 
     public class JsonTask extends AsyncTask<String, String, String> {
+
+        String data;
+
+        @Override
+        protected String doInBackground(String... params) {
+            BufferedReader reader = null;
+            HttpURLConnection connect = null;
+
+            try {
+                URL url = new URL("http://detinhabapi.aspnet.pl/api/updatestatus");
+                connect = (HttpURLConnection) url.openConnection();
+                connect.connect();
+
+                InputStream stream = connect.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(stream));
+                String line = "";
+                StringBuffer buffer = new StringBuffer();
+
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                data = buffer.toString();
+                JSONArray habArray = new JSONArray(data);
+
+
+                List habList = new ArrayList<HabitantModel>();
+                for (int i = 0; i < habArray.length(); i++) {
+
+                    HabitantModel model = new HabitantModel();
+
+                    JSONObject arrObject = habArray.getJSONObject(i);
+
+                }
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                if (connect != null) {
+                    connect.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+        }
+    }
+
+    public class JsonTask2 extends AsyncTask<String, String, String> {
 
         String data;
 

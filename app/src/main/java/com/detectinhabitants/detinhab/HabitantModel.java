@@ -8,10 +8,10 @@ public class HabitantModel {
     private int roomNumber;
     private int habStatus;
     private String habConsuelor;
-    private String consContact;
+    private int consContact;
     private String maxReturnTime;
     private String lastGuest;
-    private String adnotations;
+    private int adnotations;
 
     public String getHabName() {
         return habName;
@@ -53,11 +53,11 @@ public class HabitantModel {
         this.habConsuelor = habConsuelor;
     }
 
-    public String getConsContact() {
+    public int getConsContact() {
         return consContact;
     }
 
-    public void setConsContact(String consContact) {
+    public void setConsContact(int consContact) {
         this.consContact = consContact;
     }
 
@@ -85,11 +85,11 @@ public class HabitantModel {
         this.habStatus = habStatus;
     }
 
-    public String getAdnotations() {
+    public int getAdnotations() {
         return adnotations;
     }
 
-    public void setAdnotations(String adnotations) {
+    public void setAdnotations(int adnotations) {
         this.adnotations = adnotations;
     }
 }

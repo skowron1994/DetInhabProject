@@ -175,11 +175,14 @@ public class SearchActivity extends AppCompatActivity {
                 convertView = inflater.inflate(resource, null);
             }
 
-            TextView tvHabitantItem;
-            tvHabitantItem = convertView.findViewById(R.id.tvHabitants);
+            TextView tvHabitantItem, tvHabitantItem2, tvHabitantItem3;
+            tvHabitantItem = convertView.findViewById(R.id.tvHabitantName);
+            tvHabitantItem2 = convertView.findViewById(R.id.tvHabitantSurname);
+            tvHabitantItem3 = convertView.findViewById(R.id.tvHabitantRoom);
 
-            tvHabitantItem.setText( habitantList.get(position).getHabName() +
-                                    " " + habitantList.get(position).getHabSurname() + " Pokój: " + String.valueOf(habitantList.get(position).getRoomNumber()));
+            tvHabitantItem.setText( habitantList.get(position).getHabName());
+            tvHabitantItem2.setText(habitantList.get(position).getHabSurname());
+            tvHabitantItem3.setText(String.valueOf(habitantList.get(position).getRoomNumber()));
 
             return convertView;
         }

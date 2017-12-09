@@ -1,16 +1,14 @@
 package com.detectinhabitants.detinhab;
 
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,13 +25,13 @@ import java.net.URL;
 
 public class ManageChosenActivity extends AppCompatActivity {
 
-    private static TextView habName, habSurname, habRoom;
-    private TextView currentStatus, habCounsuelor, habContact, habReturnTime, habLastGuest, habStatus, habAdnotations, habAge;
-    private Button btnSave, btnBack;
-    private Spinner statusListSpinner;
+    private static TextView habName, habSurname, habRoom, habCounsuelor, habContact, habReturnTime, habLastGuest, habSex, habAge;
+    private TextView currentStatus;
     private ImageButton statusChange;
+    private ListView lvStatusChange;
     HabitantModel habModel;
     String idChosen;
+    private int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,61 +45,74 @@ public class ManageChosenActivity extends AppCompatActivity {
         habContact = (TextView) findViewById(R.id.tvCounContact);
         habReturnTime = (TextView) findViewById(R.id.tvMaxReturnTime);
         habLastGuest = (TextView) findViewById(R.id.tvLastGuest);
-        statusListSpinner = (Spinner)findViewById(R.id.spStatusList);
+        habSex = (TextView) findViewById(R.id.tvAdnotations);
         currentStatus = (TextView)findViewById(R.id.tvCurrentStatus);
         statusChange = (ImageButton)findViewById(R.id.fbChangeStatus);
+        lvStatusChange = (ListView)findViewById(R.id.lvStatusList);
         Bundle intent = getIntent().getExtras();
         idChosen = String.valueOf(intent.getInt("id"));
         new JsonTask2().execute(idChosen);
-        statusListSpinner.setVisibility(View.INVISIBLE);
+        lvStatusChange.setVisibility(View.INVISIBLE);
 
         statusChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                statusListSpinner.setVisibility(View.VISIBLE);
+                lvStatusChange.setVisibility(View.VISIBLE);
             }
         });
 
 
         //list of statuses, controlled in listener
-        String[] statusList = {"Wybierz status", "W pokoju", "Opuścił placówkę", "Wyjechał na weekend", "Na zajęciach pozalekcyjnych", "Spóźnia się"};
-        ArrayAdapter<String> status = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, statusList);
-        statusListSpinner.setAdapter(status);
-        statusListSpinner.setSelection(0);
+        String[] statusList = {"Wybierz status:", "W pokoju", "Opuścił placówkę", "Wyjechał na weekend", "Na zajęciach pozalekcyjnych", "Spóźnia się"};
+        ArrayAdapter<String> status = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, statusList);
+        lvStatusChange.setAdapter(status);
+        lvStatusChange.setSelection(0);
 
-        //controller for items chosen from spinner of statuses - on click request gonna be sent to api and then actions performed in the app
-        statusListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
+        lvStatusChange.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int id, long position) {
-                    switch((int)position){
-                        case 1:
-                            habModel.setHabStatus(1);
-                            Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
-                            changeStatus();
-                            break;
-                        case 2:
-                            habModel.setHabStatus(2);
-                            Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
-                            changeStatus();
-                            break;
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                while (n <= position) {
+                    if (position == n) {
+
+                        switch((int)position){
+
+                            case 1:
+                                habModel.setHabStatus(1);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                            case 2:
+                                habModel.setHabStatus(2);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                            case 3:
+                                habModel.setHabStatus(3);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                            case 4:
+                                habModel.setHabStatus(4);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                            case 5:
+                                habModel.setHabStatus(5);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                        }
+                        lvStatusChange.setVisibility(View.INVISIBLE);
                     }
-                    statusListSpinner.setVisibility(View.INVISIBLE);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-
+                    n++;
+                }
+                n = 0;
 
             }
         });
 
 
-
-
     }
-
 
     private void changeStatus(){
         if(habModel.getHabStatus()==1){
@@ -109,6 +120,15 @@ public class ManageChosenActivity extends AppCompatActivity {
         }
         else if(habModel.getHabStatus()==2){
             currentStatus.setText("Poza placówką");
+        }
+        else if(habModel.getHabStatus()==3){
+            currentStatus.setText("Wyjechał na weekend");
+        }
+        else if(habModel.getHabStatus()==4){
+            currentStatus.setText("Na zajęciach pozalekcyjnych");
+        }
+        else if(habModel.getHabStatus()==5){
+            currentStatus.setText("Spóźnia się");
         }
 
     }
@@ -119,7 +139,7 @@ public class ManageChosenActivity extends AppCompatActivity {
         BufferedReader reader;
         HttpURLConnection connect;
         HabitantModel model;
-        String data, name, surname, room;
+        String data;
 
         @Override
         protected HabitantModel doInBackground(String... strings) {
@@ -147,6 +167,13 @@ public class ManageChosenActivity extends AppCompatActivity {
                 model.setHabSurname(object.getString("Surname"));
                 model.setRoomNumber(object.getInt("RoomNumber"));
                 model.setHabStatus(object.getInt("Status"));
+                model.setHabConsuelor(object.getString("ConsuelorName"));
+                model.setConsContact(object.getInt("ConsuelorContact"));
+                model.setMaxReturnTime(object.getString("MaxTime"));
+                model.setLastGuest(object.getString("LastGuest"));
+                model.setHabAge(object.getInt("Age"));
+                //płeć
+                model.setAdnotations(object.getInt("Sex"));
                 return model;
 
             } catch (MalformedURLException e) {
@@ -177,12 +204,32 @@ public class ManageChosenActivity extends AppCompatActivity {
             habName.setText(s.getHabName());
             habSurname.setText(s.getHabSurname());
             habRoom.setText(String.valueOf(s.getRoomNumber()));
+            habCounsuelor.setText(s.getHabConsuelor());
+            habContact.setText(String.valueOf(s.getConsContact()));
+            habAge.setText(String.valueOf(s.getHabAge()));
+            habReturnTime.setText(s.getMaxReturnTime());
+            habLastGuest.setText(s.getLastGuest());
+            if(s.getAdnotations()==0){
+                habSex.setText("Kobieta");
+            }
+            else{
+                habSex.setText("Mężczyzna");
+            }
             habModel = s;
             if(habModel.getHabStatus()==1){
                 currentStatus.setText("W pokoju");
             }
             else if(habModel.getHabStatus()==2){
                 currentStatus.setText("Poza placówką");
+            }
+            else if(habModel.getHabStatus()==3){
+                currentStatus.setText("Wyjechał na weekend");
+            }
+            else if(habModel.getHabStatus()==4){
+                currentStatus.setText("Na zajęciach pozalekcyjnych");
+            }
+            else if(habModel.getHabStatus()==5){
+                currentStatus.setText("Spóźnia się");
             }
         }
     }

@@ -7,75 +7,86 @@
     android:background="@drawable/loginshadow"
     tools:context="com.detectinhabitants.detinhab.LoginActivity">
 
-    <ImageView
-        android:id="@+id/imgDetinhab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        android:contentDescription="Logo aplikacji"
-        app:srcCompat="@drawable/detinhab" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
-    <EditText
-        android:id="@+id/etLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="190dp"
-        android:ems="12"
-        android:hint="Wprowadź login lub email"
-        android:inputType="textPersonName"
-        android:singleLine="true"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20dp" />
+        <ImageView
+            android:id="@+id/imgDetinhab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp"
+            android:contentDescription="Logo aplikacji"
+            app:srcCompat="@drawable/detinhab" />
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/etLogin"
-        android:ems="12"
-        android:hint="Wprowadź hasło"
-        android:inputType="textPassword"
-        android:singleLine="true"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20dp" />
+        <EditText
+            android:id="@+id/etLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="190dp"
+            android:ems="12"
+            android:hint="Wprowadź login lub email"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/tvPassForgotten"
-        android:layout_alignLeft="@+id/tvPassForgotten"
-        android:layout_alignRight="@+id/tvPassForgotten"
-        android:layout_alignStart="@+id/tvPassForgotten"
-        android:layout_below="@+id/etPassword"
-        android:text="Zaloguj"
-        android:textSize="16dp"/>
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/etLogin"
+            android:ems="12"
+            android:hint="Wprowadź hasło"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/tvPassForgotten"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:text="Zapomniałeś hasła?"
-        android:textAllCaps="false"
-        android:textColor="@android:color/background_dark"
-        android:textSize="15dp"
-        />
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/tvPassForgotten"
+            android:layout_alignLeft="@+id/tvPassForgotten"
+            android:layout_alignRight="@+id/tvPassForgotten"
+            android:layout_alignStart="@+id/tvPassForgotten"
+            android:layout_below="@+id/etPassword"
+            android:text="Zaloguj"
+            android:textSize="16dp"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/tvPassForgotten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnLogin"
+            android:layout_centerHorizontal="true"
+            android:text="Zapomniałeś hasła?"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            />
+    </RelativeLayout>
+
 
 
 </RelativeLayout>

@@ -1,17 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="60dp"
+    android:gravity="center_vertical|center_horizontal">
+
 
 
         <TextView
-            android:id="@+id/tvHabitants"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:id="@+id/tvHabitantName"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height="60dp"
             android:textAlignment="center"
             android:textSize="20dp"
-            android:text="Name + Surname" />
+            android:text="Name"
+            android:layout_marginLeft="16dp"
+            />
 
+        <TextView
+            android:id="@+id/tvHabitantSurname"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height="60dp"
+            android:textAlignment="center"
+            android:layout_toEndOf="@+id/tvHabitantName"
+            android:textSize="20dp"
+            android:text="Surname"
+            android:layout_toRightOf="@+id/tvHabitantName"
+            android:layout_marginLeft="10dp"/>
 
+        <TextView
+            android:id="@+id/tvHabitantRoom"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:text="Room"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/imgView"/>
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_marginTop="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/warning"
+            android:layout_marginRight="16dp"/>
+
+</RelativeLayout>

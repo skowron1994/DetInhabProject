@@ -1,9 +1,5 @@
 package com.detectinhabitants.detinhab;
 
-/**
- * Created by Kamil on 14.11.2017.
- */
-
 public class UserModel {
 
     private int usrID;

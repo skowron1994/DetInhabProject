@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg">
+    android:background="@drawable/loginshadow">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/linearLayout">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,76 +30,106 @@
                 app:srcCompat="@drawable/inhabitants" />
 
             <TextView
-                    android:id="@+id/inhabTitle"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="Mieszkańcy"
-                    android:textColor="#000000"
-                    android:textSize="24sp" />
+                android:id="@+id/inhabTitle"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:text="Mieszkańcy"
+                android:textColor="#000000"
+                android:textSize="24sp" />
 
         </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/linearLayout">
+
+        <TextView
+            android:id="@+id/etHintInhab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Wpisz imię lub nazwisko mieszkańca:"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etSearchInhab"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="#FFFFFF"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:layout_below="@+id/etHintInhab"
+            android:text=""
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:id="@+id/relativelayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etSearchInhab">
 
             <TextView
-                android:id="@+id/etHintInhab"
-                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Wpisz imię lub nazwisko mieszkańca:"
+                android:text="Mieszkaniec:"
+                android:layout_marginLeft="16dp"
+                android:textSize="16dp"
+                android:textColor="#000000"/>
 
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pokój:"
+                android:textSize="16dp"
+                android:layout_marginRight="56dp"
+                android:layout_alignParentRight="true"
+                android:textColor="#000000"/>
 
-            <EditText
-                android:id="@+id/etSearchInhab"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:background="#FFFFFF"
-                android:ems="15"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textSize="20sp" />
+        </RelativeLayout>
 
-        </LinearLayout>
-
-    <ListView
-        android:id="@+id/lvInhabitants"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/back"
-        android:layout_below="@id/linearLayout"
-        android:layout_marginTop="17dp"
-        android:background="#FFFFFF"
-
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="183dp"
-        android:layout_marginBottom="5dp">
-
-    </ListView>
-
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/back">
-
-        <Button
-            android:id="@+id/btnBack"
+        <ListView
+            android:id="@+id/lvInhabitants"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginStart="8dp"
-            android:text="Powrót"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/back"
+            android:layout_below="@id/relativelayout1"
+            android:layout_marginTop="1dp"
+            android:background="#FFFFFF"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="183dp"
+            android:layout_marginBottom="5dp">
+
+        </ListView>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/back">
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Powrót"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

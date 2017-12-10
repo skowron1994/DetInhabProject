@@ -4,163 +4,169 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/loginshadow"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-    <Button
-        android:id="@+id/btnLogout"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="40dp"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:drawableTop="@drawable/logout" />
-
-    <LinearLayout
-        android:id="@+id/gridItems"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/btnLogout"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:columnCount="1"
-        android:orientation="vertical"
-        android:rowCount="2">
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <Button
+            android:id="@+id/btnLogout"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:drawableTop="@drawable/logout" />
 
         <LinearLayout
+            android:id="@+id/gridItems"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imgDetinhab2"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:srcCompat="@drawable/logodet" />
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tvWelcome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Witaj ....."
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="24sp"
-                    android:textStyle="bold|italic"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/btnLogout"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:columnCount="1"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:rowCount="2">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnInhManag"
-                    style="@android:style/Widget.Holo.Light.Button.Inset"
+                <ImageView
+                    android:id="@+id/imgDetinhab2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:drawablePadding="5dp"
-                    android:drawableTop="@drawable/inhabitants"
-                    android:minHeight="120dp"
-                    android:minWidth="120dp"
-                    android:paddingTop="12dp"
-                    android:text="Mieszkańcy"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:layout_height="100dp"
+                    app:srcCompat="@drawable/detinhab" />
 
-                <Button
-                    android:id="@+id/btnGstManag"
-                    style="@android:style/Widget.Holo.Light.Button.Inset"
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:drawablePadding="5dp"
-                    android:drawableTop="@drawable/guests"
-                    android:minHeight="120dp"
-                    android:minWidth="120dp"
-                    android:paddingTop="12dp"
-                    android:text="Goście"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvWelcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Witaj ....."
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <Button
-                    android:id="@+id/btnReport"
-                    style="@android:style/Widget.Holo.Light.Button.Inset"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:drawablePadding="5dp"
-                    android:drawableTop="@drawable/reports"
-                    android:minHeight="120dp"
-                    android:minWidth="120dp"
-                    android:paddingTop="12dp"
-                    android:text="Raporty"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnSettings"
-                    style="@android:style/Widget.Holo.Light.Button.Inset"
+                    <Button
+                        android:id="@+id/btnInhManag"
+                        style="@android:style/Widget.Holo.Light.Button.Inset"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/inhabitants"
+                        android:minHeight="120dp"
+                        android:minWidth="120dp"
+                        android:paddingTop="12dp"
+                        android:text="Mieszkańcy"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnGstManag"
+                        style="@android:style/Widget.Holo.Light.Button.Inset"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/guests"
+                        android:minHeight="120dp"
+                        android:minWidth="120dp"
+                        android:paddingTop="12dp"
+                        android:text="Goście"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:drawablePadding="5dp"
-                    android:drawableTop="@drawable/settings"
-                    android:minHeight="120dp"
-                    android:minWidth="120dp"
-                    android:paddingTop="12dp"
-                    android:text="Ustawienia"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnReport"
+                        style="@android:style/Widget.Holo.Light.Button.Inset"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/reports"
+                        android:minHeight="120dp"
+                        android:minWidth="120dp"
+                        android:paddingTop="12dp"
+                        android:text="Raporty"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnSettings"
+                        style="@android:style/Widget.Holo.Light.Button.Inset"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@drawable/settings"
+                        android:minHeight="120dp"
+                        android:minWidth="120dp"
+                        android:paddingTop="12dp"
+                        android:text="Ustawienia"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
-
+    </RelativeLayout>
 
 </RelativeLayout>

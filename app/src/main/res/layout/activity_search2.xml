@@ -1,71 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/loginshadow">
 
-    <ImageView
-        android:id="@+id/imgDetinhab4"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        app:srcCompat="@drawable/detinhab"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/lvGuests"
-        android:layout_alignEnd="@+id/lvGuests" />
 
-    <TextView
-        android:id="@+id/tvHintGst"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etSrchGst"
-        android:layout_alignStart="@+id/etSrchGst"
-        android:layout_alignTop="@+id/imgDetinhab4"
-        android:text="Wpisz imię lub nazwisko gościa:"
-        android:textColor="#FFFFFF" />
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
 
-    <EditText
-        android:id="@+id/etSrchGst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:background="#FFFFFF"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="45dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="21dp"
-        android:width="300dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:padding="10dp">
 
-    <ListView
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+
+                app:srcCompat="@drawable/guests"/>
+
+            <TextView
+                android:id="@+id/gstTitle"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:text="Goście"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        android:id="@+id/lvGuests"
-        android:layout_marginTop="115dp"
-        android:layout_marginRight="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginBottom="60dp"
-        />
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/linearLayout">
 
-    <Button
-        android:id="@+id/btnBack_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Powrót"
-        android:width="250dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/etHintGst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Wpisz imię lub nazwisko mieszkańca:"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tvAddGst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/etSrchGst"
-        android:layout_alignRight="@+id/etSrchGst"
-        android:layout_below="@+id/imgDetinhab4"
-        android:text="DODAJ"
-        android:textColor="#00FF00"/>
+        <EditText
+            android:id="@+id/etSearchGst"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="#FFFFFF"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:layout_below="@+id/etHintGst"
+            android:text=""
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"/>
+
+        <ListView
+            android:id="@+id/lvGuests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/back"
+            android:layout_below="@id/etSearchGst"
+            android:layout_marginTop="17dp"
+            android:background="#FFFFFF"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="183dp"
+            android:layout_marginBottom="5dp">
+        </ListView>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/back">
+
+            <Button
+                android:id="@+id/btnBack_2"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Powrót"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

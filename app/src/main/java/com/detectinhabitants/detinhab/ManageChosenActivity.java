@@ -1,32 +1,25 @@
 package com.detectinhabitants.detinhab;
 
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ManageChosenActivity extends AppCompatActivity {
 
-    private TextView habName, habSurname, habAge, habRoom, habCounsuelor, habContact, habReturnTime, habLastGuest, habStatus, habAdnotations;
-    private String shabName, shabSurname;
-    private Button btnChange;
+    public static TextView habName, habSurname, habRoom, habCounsuelor, habContact, habReturnTime, habLastGuest, habSex, habAge, currentStatus;
+    private ImageButton statusChange;
+    private ListView lvStatusChange;
+    public static HabitantModel habModel;
+    String idChosen;
+    private int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,105 +33,91 @@ public class ManageChosenActivity extends AppCompatActivity {
         habContact = (TextView) findViewById(R.id.tvCounContact);
         habReturnTime = (TextView) findViewById(R.id.tvMaxReturnTime);
         habLastGuest = (TextView) findViewById(R.id.tvLastGuest);
-        btnChange = (Button) findViewById(R.id.btnChange);
+        habSex = (TextView) findViewById(R.id.tvAdnotations);
+        currentStatus = (TextView)findViewById(R.id.tvCurrentStatus);
+        statusChange = (ImageButton)findViewById(R.id.fbChangeStatus);
+        lvStatusChange = (ListView)findViewById(R.id.lvStatusList);
+        Bundle intent = getIntent().getExtras();
+        idChosen = String.valueOf(intent.getInt("id"));
+        new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
+        lvStatusChange.setVisibility(View.INVISIBLE);
 
-        /*TextView habName = (TextView)findViewById(R.id.tvAge);
-        TextView habName = (TextView)findViewById(R.id.tvAge);*/
-
-        Bundle info = new Bundle();
-        shabName = info.getString("");
-
-        btnChange.setOnClickListener(new View.OnClickListener() {
+        statusChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               new JsonTask().execute();
+                lvStatusChange.setVisibility(View.VISIBLE);
             }
         });
 
 
+        //statusy
+        String[] statusList = {"Wybierz status:", "W pokoju", "Opuścił placówkę", "Wyjechał na weekend", "Na zajęciach pozalekcyjnych", "Spóźnia się"};
+        ArrayAdapter<String> status = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, statusList);
+        lvStatusChange.setAdapter(status);
+        lvStatusChange.setSelection(0);
+
+        lvStatusChange.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                while (n <= position) {
+                    if (position == n) {
+
+                        switch((int)position){
+
+                            case 1:
+                                habModel.setHabStatus(1);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                            case 2:
+                                habModel.setHabStatus(2);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                            case 3:
+                                habModel.setHabStatus(3);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                            case 4:
+                                habModel.setHabStatus(4);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                            case 5:
+                                habModel.setHabStatus(5);
+                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
+                                changeStatus();
+                                break;
+                        }
+                        lvStatusChange.setVisibility(View.INVISIBLE);
+                    }
+                    n++;
+                }
+                n = 0;
+
+            }
+        });
+
 
     }
 
-
-    public class JsonTask extends AsyncTask<String, String, String> {
-
-        String data;
-
-        @Override
-        protected String doInBackground(String... params) {
-            BufferedReader reader = null;
-            HttpURLConnection connect = null;
-
-            try {
-                URL url = new URL("http://detinhabapi.aspnet.pl/api/UpdateUser");
-                connect = (HttpURLConnection) url.openConnection();
-                connect.setRequestMethod("POST");
-                connect.setRequestProperty("UserContext", "{" +
-                        "\"UniqueID\": \"5\"," +
-                        "\"Name\": \"Ryszard\"," +
-                        "\"Surname\": \"xxxC\"," +
-                        "\"Login\": \"admin\"," +
-                        "\"Password\": \"admin\"," +
-                        "\"Mail\": \"piotrsiemieniuk@outlook.com\"," +
-                        "\"PermissionFlag\": 5" +
-                        "}");
-                connect.connect();
-                int response = connect.getResponseCode();
-
-               /* InputStream stream = connect.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(stream));
-                String line = "";
-                StringBuffer buffer = new StringBuffer();
-
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line);
-                }
-
-                data = buffer.toString();
-                JSONArray habArray = new JSONArray(data);
-
-
-                List habList = new ArrayList<HabitantModel>();
-                for (int i = 0; i < habArray.length(); i++) {
-
-                    HabitantModel model = new HabitantModel();
-
-                    JSONObject arrObject = habArray.getJSONObject(i);
-
-                    model.setHabName(arrObject.getString("Name"));
-                    model.setHabSurname(arrObject.getString("Surname"));
-                    model.setRoomNumber(arrObject.getInt("RoomNumber"));
-                    habList.add(model);
-                }*/
-
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } /*catch (JSONException e) {
-                e.printStackTrace();
-            }*/ finally {
-                if (connect != null) {
-                    connect.disconnect();
-                }
-                try {
-                    if (reader != null) {
-                        reader.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            return null;
+    private void changeStatus(){
+        if(habModel.getHabStatus()==1){
+            currentStatus.setText("W pokoju");
+        }
+        else if(habModel.getHabStatus()==2){
+            currentStatus.setText("Poza placówką");
+        }
+        else if(habModel.getHabStatus()==3){
+            currentStatus.setText("Wyjechał na weekend");
+        }
+        else if(habModel.getHabStatus()==4){
+            currentStatus.setText("Na zajęciach pozalekcyjnych");
+        }
+        else if(habModel.getHabStatus()==5){
+            currentStatus.setText("Spóźnia się");
         }
 
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-
-        }
     }
 }
-

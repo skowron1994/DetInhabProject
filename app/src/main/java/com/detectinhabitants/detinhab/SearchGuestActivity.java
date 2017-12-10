@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SearchGuestActivity extends AppCompatActivity {
-    private TextView tvAddGst;
     private String[] guests;
     private ArrayList<String> guList;
     private ArrayAdapter<String> adapter;
@@ -31,11 +30,9 @@ public class SearchGuestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search2);
         getSupportActionBar().hide();
-        EditText etSearchGst = (EditText) findViewById(R.id.etSrchGst);
+        EditText etSearchGst = (EditText) findViewById(R.id.etSearchGst);
         Button btnBack_2 = (Button) findViewById(R.id.btnBack_2);
-        tvAddGst = (TextView)findViewById(R.id.tvAddGst);
         lvGuests = (ListView)findViewById(R.id.lvGuests);
-        tvAddGst.setVisibility(View.GONE);
         initList();
         etSearchGst.addTextChangedListener(new TextWatcher() {
             @Override
@@ -61,10 +58,10 @@ public class SearchGuestActivity extends AppCompatActivity {
                         if(!item.toLowerCase().contains(s.toString().toLowerCase())){
                             guList.remove(item);
                             if((!s.toString().isEmpty()) && (guList.isEmpty())){
-                                tvAddGst.setVisibility(View.VISIBLE);
+
                             }
                             else{
-                                tvAddGst.setVisibility(View.GONE);
+
                             }
                         }
                     }
@@ -72,12 +69,6 @@ public class SearchGuestActivity extends AppCompatActivity {
             }
         });
 
-        tvAddGst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         btnBack_2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,14 +93,13 @@ public class SearchGuestActivity extends AppCompatActivity {
 
     private void searchPhrase(String s) {
         for(String item:guests){
-            tvAddGst.setVisibility(View.GONE);
             if(!item.toLowerCase().contains(s.toString().toLowerCase())){
                 guList.remove(item);
                 if((!s.toString().isEmpty()) && (guList.isEmpty())){
-                    tvAddGst.setVisibility(View.VISIBLE);
+
                 }
                 else{
-                    tvAddGst.setVisibility(View.GONE);
+
                 }
             }
         }
@@ -120,8 +110,8 @@ public class SearchGuestActivity extends AppCompatActivity {
     private void initList() {
         guests = new String[]{"G1","G2","G3","G4"};
         guList = new ArrayList<>(Arrays.asList(guests));
-        adapter = new ArrayAdapter<String>(this, R.layout.guests, R.id.tvGuests, guList);
-        lvGuests.setAdapter(adapter);
+        /*adapter = new ArrayAdapter<String>(this, R.layout.guests, R.id.tvGuests, guList);
+        lvGuests.setAdapter(adapter);*/
 
     }
 }

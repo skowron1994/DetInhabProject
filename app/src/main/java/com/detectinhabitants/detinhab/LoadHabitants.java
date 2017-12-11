@@ -118,7 +118,6 @@ public class LoadHabitants extends AsyncTask<String, String, List<HabitantModel>
             habitantList = objects;
             this.resource = resource;
             inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
-
         }
 
         @NonNull
@@ -137,7 +136,6 @@ public class LoadHabitants extends AsyncTask<String, String, List<HabitantModel>
             tvHabitantItem.setText(habitantList.get(position).getHabName());
             tvHabitantItem2.setText(habitantList.get(position).getHabSurname());
             tvHabitantItem3.setText(String.valueOf(habitantList.get(position).getRoomNumber()));
-
             return convertView;
         }
     }

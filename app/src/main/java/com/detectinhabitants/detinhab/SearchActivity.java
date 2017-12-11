@@ -5,19 +5,25 @@ package com.detectinhabitants.detinhab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SearchActivity extends AppCompatActivity {
 
     public static ListView lvInhabitants;
-    private int length, n = 0;
+    private int n = 0;
     private Button btnBack;
-    private EditText etSearchInhab;
+    public static SearchView etSearchInhab;
 
 
     @Override
@@ -25,7 +31,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         getSupportActionBar().hide();
-        etSearchInhab = (EditText) findViewById(R.id.etSearchInhab);
+        etSearchInhab = (SearchView) findViewById(R.id.etSearchInhab);
         btnBack = (Button) findViewById(R.id.btnBack);
         lvInhabitants = (ListView) findViewById(R.id.lvInhabitants);
         etSearchInhab.setSelected(false);
@@ -37,6 +43,19 @@ public class SearchActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        etSearchInhab.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
 
         lvInhabitants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

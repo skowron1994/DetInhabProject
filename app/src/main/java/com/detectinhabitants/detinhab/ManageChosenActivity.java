@@ -65,9 +65,9 @@ public class ManageChosenActivity extends AppCompatActivity {
                         switch((int)position){
 
                             case 1:
-                                habModel.setHabStatus(1);
-                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
                                 changeStatus();
+                                new StatusChangeHandler(ManageChosenActivity.this).execute(position);
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
                                 break;
                             case 2:
                                 habModel.setHabStatus(2);
@@ -104,18 +104,23 @@ public class ManageChosenActivity extends AppCompatActivity {
 
     private void changeStatus(){
         if(habModel.getHabStatus()==1){
+
             currentStatus.setText("W pokoju");
         }
         else if(habModel.getHabStatus()==2){
+
             currentStatus.setText("Poza placówką");
         }
         else if(habModel.getHabStatus()==3){
+
             currentStatus.setText("Wyjechał na weekend");
         }
         else if(habModel.getHabStatus()==4){
+
             currentStatus.setText("Na zajęciach pozalekcyjnych");
         }
         else if(habModel.getHabStatus()==5){
+
             currentStatus.setText("Spóźnia się");
         }
 

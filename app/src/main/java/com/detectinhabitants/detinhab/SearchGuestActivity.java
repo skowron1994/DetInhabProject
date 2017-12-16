@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +25,10 @@ public class SearchGuestActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private ListView lvGuests;
     private int length, n=0;
+    private LinearLayout dlgAddGuest;
+    private ImageButton btnAddGuest;
+    private EditText txtGuestFirstName;
+    private EditText txtGuestLastName;
 
 
     @Override
@@ -31,9 +37,27 @@ public class SearchGuestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search2);
         getSupportActionBar().hide();
         EditText etSearchGst = (EditText) findViewById(R.id.etSearchGst);
-        Button btnBack_2 = (Button) findViewById(R.id.btnBack_2);
         lvGuests = (ListView)findViewById(R.id.lvGuests);
+        dlgAddGuest = (LinearLayout)findViewById(R.id.dlgAddGuest);
+        btnAddGuest = (ImageButton)findViewById(R.id.fbAddGuest);
+        txtGuestFirstName = (EditText)findViewById(R.id.etFirstName) ;
+        txtGuestLastName = (EditText)findViewById(R.id.etLastName);
         initList();
+        dlgAddGuest.setVisibility(View.INVISIBLE);
+
+        btnAddGuest.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                if(dlgAddGuest.getVisibility() == View.INVISIBLE)
+                    dlgAddGuest.setVisibility(View.VISIBLE);
+                else
+                {
+                    ClearAllDialogControl();
+                    dlgAddGuest.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
         etSearchGst.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -69,14 +93,6 @@ public class SearchGuestActivity extends AppCompatActivity {
             }
         });
 
-
-        btnBack_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         lvGuests.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -89,6 +105,11 @@ public class SearchGuestActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void ClearAllDialogControl() {
+        txtGuestFirstName.setText("");
+        txtGuestLastName.setText("");
     }
 
     private void searchPhrase(String s) {

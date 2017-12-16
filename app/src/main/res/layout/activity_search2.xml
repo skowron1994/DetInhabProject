@@ -63,7 +63,7 @@
             android:id="@+id/etSearchGst"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/listview"
             android:ems="15"
             android:inputType="textPersonName"
             android:layout_below="@+id/etHintGst"
@@ -75,35 +75,106 @@
             android:id="@+id/lvGuests"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/back"
             android:layout_below="@id/etSearchGst"
             android:layout_marginTop="17dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/listview"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="183dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentBottom="true">
         </ListView>
-
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/back">
-
-            <Button
-                android:id="@+id/btnBack_2"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Powrót"
-                android:background="@drawable/button_menu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </android.support.constraint.ConstraintLayout>
 
     </RelativeLayout>
 
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:id="@+id/fbAddGuest"
+        android:background="@drawable/oval"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="65dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/add"
+        />
+    
+    <LinearLayout
+        android:id="@+id/dlgAddGuest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="40dp"
+        android:minHeight="100dp"
+        android:background="@drawable/listview"
+        android:orientation="vertical"
+        android:padding="10dp">
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dodaj gościa"
+            android:textSize="20dp"
+            android:padding="5dp"/>
+
+        <EditText
+            android:id="@+id/etFirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Imie"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/etLastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Nazwisko"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zatwierdź"
+                android:textSize="16dp"
+                android:layout_margin="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_menu"
+                android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anuluj"
+                android:textSize="16dp"
+                android:layout_margin="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_menu"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+        
+    </LinearLayout>
 
 </RelativeLayout>

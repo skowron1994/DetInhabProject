@@ -51,7 +51,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="10dp"
-        android:background="#66FFFFFF">
+        android:background="@drawable/listview">
 
         <TextView
             android:id="@+id/tvHabAgeInfo"
@@ -268,7 +268,7 @@
         android:layout_height="160dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="#66ffffff">
+        android:background="@drawable/listview">
 
         <TextView
 

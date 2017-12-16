@@ -45,8 +45,8 @@ public class StatusChangeHandler extends AsyncTask<Integer, Integer, String> {
             connect = (HttpURLConnection)url.openConnection();
             connect.setRequestMethod("POST");
             connect.setRequestProperty("habitiantid", String.valueOf(strings[2]));
-            connect.setRequestProperty("OriginalStatus:", String.valueOf(strings[0]));
-            connect.setRequestProperty("CurrentStatus:", String.valueOf(strings[1]));
+            connect.setRequestProperty("OriginalStatus", String.valueOf(strings[1]));
+            connect.setRequestProperty("CurrentStatus", String.valueOf(strings[0]));
             connect.connect();
             if(connect.getResponseCode()==200){
                 response = "Pomyślnie zmieniono ztatus.";
@@ -56,7 +56,7 @@ public class StatusChangeHandler extends AsyncTask<Integer, Integer, String> {
             }
             return response;
 
-
+//
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

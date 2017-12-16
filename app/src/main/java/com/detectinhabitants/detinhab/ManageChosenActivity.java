@@ -70,24 +70,24 @@ public class ManageChosenActivity extends AppCompatActivity {
                                 new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
                                 break;
                             case 2:
-                                habModel.setHabStatus(2);
-                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
-                                changeStatus();
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
+                                new StatusChangeHandler(ManageChosenActivity.this).execute(position, AppHelper.HabitantContext.getHabStatus(), Integer.valueOf(idChosen));
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
                                 break;
                             case 3:
-                                habModel.setHabStatus(3);
-                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
-                                changeStatus();
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
+                                new StatusChangeHandler(ManageChosenActivity.this).execute(position, AppHelper.HabitantContext.getHabStatus(), Integer.valueOf(idChosen));
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
                                 break;
                             case 4:
-                                habModel.setHabStatus(4);
-                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
-                                changeStatus();
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
+                                new StatusChangeHandler(ManageChosenActivity.this).execute(position, AppHelper.HabitantContext.getHabStatus(), Integer.valueOf(idChosen));
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
                                 break;
                             case 5:
-                                habModel.setHabStatus(5);
-                                Toast.makeText(getApplicationContext(),"Status został zmieniony!",Toast.LENGTH_SHORT).show();
-                                changeStatus();
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
+                                new StatusChangeHandler(ManageChosenActivity.this).execute(position, AppHelper.HabitantContext.getHabStatus(), Integer.valueOf(idChosen));
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
                                 break;
                         }
                         lvStatusChange.setVisibility(View.INVISIBLE);

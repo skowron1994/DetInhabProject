@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 public class MenuActivity extends AppCompatActivity {
@@ -70,8 +70,9 @@ public class MenuActivity extends AppCompatActivity {
         btnReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent reports = new Intent(MenuActivity.this, ReportActivity.class);
-                startActivity(reports);
+                Toast.makeText(getApplicationContext(),"Prace w toku, prosimy o cierpliwość.",Toast.LENGTH_SHORT).show();
+                //Intent reports = new Intent(MenuActivity.this, ReportActivity.class);
+                //startActivity(reports);
             }
         });
 

@@ -17,8 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/colorPrimary"
-            android:padding="10dp">
+            android:background="@color/white" >
 
 
             <ImageView
@@ -34,11 +33,11 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp"
                 android:text="Mieszkańcy"
                 android:textColor="#000000"
-                android:textSize="24sp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
@@ -64,7 +63,7 @@
             android:id="@+id/etSearchInhab"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/searchview"
             android:ems="15"
             android:inputType="textPersonName"
             android:layout_below="@+id/etHintInhab"
@@ -106,7 +105,7 @@
             android:layout_above="@+id/back"
             android:layout_below="@id/relativelayout1"
             android:layout_marginTop="1dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/listview"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="183dp"
             android:layout_marginBottom="5dp">
@@ -123,8 +122,12 @@
             <Button
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:textColor="@color/black"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="Powrót"
+                android:background="@drawable/button_menu"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </android.support.constraint.ConstraintLayout>

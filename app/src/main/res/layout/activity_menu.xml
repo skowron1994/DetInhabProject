@@ -102,9 +102,11 @@
                         android:paddingTop="12dp"
                         android:text="Mieszkańcy"
                         android:textAllCaps="true"
-                        android:textColor="@android:color/background_dark"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/button_menu"
                         android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_margin="4dp"/>
 
                     <Button
                         android:id="@+id/btnGstManag"
@@ -119,9 +121,11 @@
                         android:paddingTop="12dp"
                         android:text="Goście"
                         android:textAllCaps="true"
-                        android:textColor="@android:color/background_dark"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/button_menu"
                         android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_margin="4dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -142,9 +146,11 @@
                         android:paddingTop="12dp"
                         android:text="Raporty"
                         android:textAllCaps="true"
-                        android:textColor="@android:color/background_dark"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/button_menu"
                         android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_margin="4dp" />
 
                     <Button
                         android:id="@+id/btnSettings"
@@ -159,9 +165,11 @@
                         android:paddingTop="12dp"
                         android:text="Ustawienia"
                         android:textAllCaps="true"
-                        android:textColor="@android:color/background_dark"
+                        android:background="@drawable/button_menu"
+                        android:textColor="@android:color/black"
                         android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_margin="4dp" />
                 </LinearLayout>
 
             </LinearLayout>

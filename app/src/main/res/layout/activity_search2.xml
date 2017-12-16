@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:id="@+id/linearLayout">
 
@@ -17,8 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/colorPrimary"
-            android:padding="10dp">
+            android:background="@color/white" >
 
 
             <ImageView
@@ -31,14 +30,14 @@
 
             <TextView
                 android:id="@+id/gstTitle"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
                 android:text="Goście"
                 android:textColor="#000000"
-                android:textSize="24sp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
@@ -95,8 +94,11 @@
             <Button
                 android:id="@+id/btnBack_2"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="Powrót"
+                android:background="@drawable/button_menu"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </android.support.constraint.ConstraintLayout>

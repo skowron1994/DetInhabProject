@@ -39,7 +39,7 @@
             android:singleLine="true"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="20dp" />
 
         <EditText
@@ -56,7 +56,7 @@
             android:inputType="textPassword"
             android:singleLine="true"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:layout_marginTop="16dp"
             android:textSize="20dp" />
 
@@ -71,6 +71,8 @@
             android:layout_below="@+id/etPassword"
             android:text="Zaloguj"
             android:textSize="16dp"
+            android:textColor="@color/black"
+            android:background="@drawable/button_menu"
             android:layout_marginTop="16dp"/>
 
         <TextView
@@ -81,7 +83,7 @@
             android:layout_centerHorizontal="true"
             android:text="Zapomniałeś hasła?"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:layout_marginTop="10dp"
             android:textSize="15dp"
             />

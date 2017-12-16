@@ -20,10 +20,8 @@ public class StatusChangeHandler extends AsyncTask<Integer, Integer, String> {
 
     BufferedReader reader;
     HttpURLConnection connect;
-    HabitantModel model;
-    String data;
     Activity activity;
-    String response;
+    String response="";
 
     StatusChangeHandler(Activity activity){
         this.activity = activity;
@@ -43,29 +41,13 @@ public class StatusChangeHandler extends AsyncTask<Integer, Integer, String> {
 
 
         try {
-            URL url = new URL("http://detinhabapi.aspnet.pl/api/UpdateStatus/");
+            URL url = new URL("http://detinhabapi.aspnet.pl/api/updatestatus/");
             connect = (HttpURLConnection)url.openConnection();
-            connect.connect();
-            connect.setRequestMethod("GET");
-            InputStream stream = connect.getInputStream();
-            reader = new BufferedReader(new InputStreamReader(stream));
-
-            StringBuffer buffer = new StringBuffer();
-
-            String line="";
-
-            while ((line = reader.readLine()) != null) {
-                buffer.append(line);
-            }
-
-            data = buffer.toString();
-            model = new HabitantModel();
-            JSONObject object = new JSONObject(data);
-            model.setHabStatus(object.getInt("Status"));
-
             connect.setRequestMethod("POST");
-            connect.setRequestProperty("OriginalStatus", String.valueOf(model.getHabStatus()));
-            connect.setRequestProperty("CurrentStatus", String.valueOf(strings[0]));
+            connect.setRequestProperty("habitiantid", String.valueOf(strings[2]));
+            connect.setRequestProperty("OriginalStatus:", String.valueOf(strings[0]));
+            connect.setRequestProperty("CurrentStatus:", String.valueOf(strings[1]));
+            connect.connect();
             if(connect.getResponseCode()==200){
                 response = "Pomyślnie zmieniono ztatus.";
             }
@@ -78,8 +60,6 @@ public class StatusChangeHandler extends AsyncTask<Integer, Integer, String> {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         } finally{
             if(connect!=null){

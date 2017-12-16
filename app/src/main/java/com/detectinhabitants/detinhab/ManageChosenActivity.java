@@ -65,8 +65,8 @@ public class ManageChosenActivity extends AppCompatActivity {
                         switch((int)position){
 
                             case 1:
-                                changeStatus();
-                                new StatusChangeHandler(ManageChosenActivity.this).execute(position);
+                                new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
+                                new StatusChangeHandler(ManageChosenActivity.this).execute(position, AppHelper.HabitantContext.getHabStatus(), Integer.valueOf(idChosen));
                                 new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
                                 break;
                             case 2:

@@ -24,6 +24,7 @@ public class SearchActivity extends AppCompatActivity {
     private int n = 0;
     private Button btnBack;
     public static SearchView etSearchInhab;
+    public static List<HabitantModel> list;
 
 
     @Override
@@ -52,6 +53,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                new FilterHandler(getApplicationContext(), (ArrayList<HabitantModel>) list);
                 return false;
             }
         });

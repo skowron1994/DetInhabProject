@@ -26,6 +26,7 @@ public class FilterHandler extends BaseAdapter implements Filterable {
         this.filteredHabList = list;
     }
 
+
     @Override
     public int getCount() {
         return habitantList.size();

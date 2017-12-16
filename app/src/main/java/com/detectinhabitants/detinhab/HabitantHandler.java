@@ -116,5 +116,6 @@ public class HabitantHandler extends AsyncTask<String, String, HabitantModel> {
         else if(ManageChosenActivity.habModel.getHabStatus()==5){
             ManageChosenActivity.currentStatus.setText("Spóźnia się");
         }
+        AppHelper.HabitantContext = s;
     }
 }

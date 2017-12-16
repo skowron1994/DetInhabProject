@@ -101,6 +101,7 @@ public class LoadHabitants extends AsyncTask<String, String, List<HabitantModel>
     @Override
     protected void onPostExecute(List<HabitantModel> s) {
         super.onPostExecute(s);
+        SearchActivity.list = s;
         HabitantAdapter adapter = new HabitantAdapter(activity.getApplicationContext(), R.layout.habitants, s);
         SearchActivity.lvInhabitants.setAdapter(adapter);
     }

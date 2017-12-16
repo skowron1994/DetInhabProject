@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/white" >
+            android:background="@drawable/listview" >
 
 
             <ImageView
@@ -63,13 +63,13 @@
             android:id="@+id/etSearchGst"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/listview"
             android:ems="15"
             android:inputType="textPersonName"
             android:layout_below="@+id/etHintGst"
             android:text=""
             android:textSize="20sp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
 
         <ListView
             android:id="@+id/lvGuests"
@@ -78,30 +78,14 @@
             android:layout_above="@+id/back"
             android:layout_below="@id/etSearchGst"
             android:layout_marginTop="17dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/listview"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="183dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentBottom="true">
         </ListView>
 
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/back">
-
-            <Button
-                android:id="@+id/btnBack_2"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Powrót"
-                android:background="@drawable/button_menu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </android.support.constraint.ConstraintLayout>
 
     </RelativeLayout>
 

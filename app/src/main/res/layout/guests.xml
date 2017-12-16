@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="60dp">
+    android:layout_height="60dp"
+    android:gravity="center_vertical|center_horizontal">
+
 
 
         <TextView
             android:id="@+id/tvGuestName"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="60dp"
             android:textAlignment="center"
             android:textSize="20dp"
             android:text="Name"
-            android:layout_marginLeft="16dp"/>
+            android:layout_marginLeft="16dp"
+            />
 
         <TextView
             android:id="@+id/tvGuestSurname"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="60dp"
             android:textAlignment="center"
             android:layout_toEndOf="@+id/tvGuestName"
             android:textSize="20dp"
@@ -24,11 +29,26 @@
             android:layout_toRightOf="@+id/tvGuestName"
             android:layout_marginLeft="10dp"/>
 
-        <ImageView
-            android:layout_width="60dp"
+        <TextView
+            android:id="@+id/tvGuestRoom"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/imgView"
+            android:layout_toStartOf="@+id/imgView"
+            android:text="Room"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/detinhab"
+            android:src="@drawable/yes"
             android:layout_marginRight="16dp"/>
 
 </RelativeLayout>

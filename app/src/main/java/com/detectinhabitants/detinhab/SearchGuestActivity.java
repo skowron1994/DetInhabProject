@@ -31,7 +31,6 @@ public class SearchGuestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search2);
         getSupportActionBar().hide();
         EditText etSearchGst = (EditText) findViewById(R.id.etSearchGst);
-        Button btnBack_2 = (Button) findViewById(R.id.btnBack_2);
         lvGuests = (ListView)findViewById(R.id.lvGuests);
         initList();
         etSearchGst.addTextChangedListener(new TextWatcher() {
@@ -69,13 +68,6 @@ public class SearchGuestActivity extends AppCompatActivity {
             }
         });
 
-
-        btnBack_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         lvGuests.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

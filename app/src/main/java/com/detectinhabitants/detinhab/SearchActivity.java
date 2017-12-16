@@ -33,17 +33,9 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         getSupportActionBar().hide();
         etSearchInhab = (SearchView) findViewById(R.id.etSearchInhab);
-        btnBack = (Button) findViewById(R.id.btnBack);
         lvInhabitants = (ListView) findViewById(R.id.lvInhabitants);
         etSearchInhab.setSelected(false);
         new LoadHabitants(SearchActivity.this).execute();
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         etSearchInhab.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

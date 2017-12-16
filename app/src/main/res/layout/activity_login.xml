@@ -40,6 +40,8 @@
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
+            android:textColorHighlight="@color/black"
+            android:textColorLink="@color/black"
             android:textSize="20dp" />
 
         <EditText
@@ -51,13 +53,14 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/etLogin"
+            android:layout_marginTop="16dp"
             android:ems="12"
             android:hint="Wprowadź hasło"
             android:inputType="textPassword"
             android:singleLine="true"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:layout_marginTop="16dp"
+            android:textColorLink="@color/black"
             android:textSize="20dp" />
 
         <Button

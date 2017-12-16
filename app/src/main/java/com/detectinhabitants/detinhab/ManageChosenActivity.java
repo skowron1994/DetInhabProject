@@ -18,6 +18,7 @@ public class ManageChosenActivity extends AppCompatActivity {
     private ImageButton statusChange;
     private ListView lvStatusChange;
     public static HabitantModel habModel;
+    boolean statuslistchecker;
     String idChosen;
     private int n;
     @Override
@@ -41,11 +42,19 @@ public class ManageChosenActivity extends AppCompatActivity {
         idChosen = String.valueOf(intent.getInt("id"));
         new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
         lvStatusChange.setVisibility(View.INVISIBLE);
+        statuslistchecker = false;
 
         statusChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lvStatusChange.setVisibility(View.VISIBLE);
+                if(!statuslistchecker){
+                    lvStatusChange.setVisibility(View.VISIBLE);
+                    statuslistchecker = true;
+                }
+                else if(statuslistchecker){
+                    lvStatusChange.setVisibility(View.INVISIBLE);
+                    statuslistchecker = false;
+                }
             }
         });
 

@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginshadow"
+    tools:context=".AddHabitantActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/listview">
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+
+                app:srcCompat="@drawable/inhabitants"/>
+
+            <TextView
+                android:id="@+id/habitantsAddTitle"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:text="Dodaj mieszkańca"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/linearLayout"
+    android:id="@+id/sw1"
+    android:layout_marginBottom="20dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Imię -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Imię:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantNameTitle"
+                android:textColor="@color/black"/>
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/space1"
+            android:layout_height="40dp"
+            android:id="@+id/etNewHabitantName"
+            android:background="@drawable/listview"/>
+
+        <!-- Nazwisko -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space2"
+            android:layout_below="@+id/etNewHabitantName"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Nazwisko:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantSurnameTitle"
+                android:textColor="@color/black"
+                android:paddingBottom="5dp"/>
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/space2"
+            android:layout_height="40dp"
+            android:id="@+id/etNewHabitantSurname"
+            android:background="@drawable/listview"/>
+
+
+        <!-- Płeć -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space10"
+            android:layout_below="@+id/etNewHabitantSurname"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Płeć:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantSexTitle"
+                android:textColor="@color/black"
+                android:paddingBottom="5dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativelayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etNewHabitantSurname"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+        </RelativeLayout>
+
+
+
+
+<LinearLayout
+    android:id="@+id/linearlayot2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@+id/relativelayout2"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M"
+        android:textSize="15dp"
+        android:textColor="@color/black"/>
+    <CheckBox
+        android:id="@+id/checkboxMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/checkboxFemale"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="K"
+        android:textSize="15dp"
+        android:textColor="@color/black"/>
+
+    <CheckBox
+        android:id="@+id/checkboxFemale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toLeftOf="@+id/checkboxMale"/>
+
+</LinearLayout>
+
+        <!-- Wiek -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space3"
+            android:layout_below="@+id/linearlayot2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Data urodzenia:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantAgeTitle"
+                android:textColor="@color/black"
+                android:paddingBottom="5dp"/>
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/space3"
+            android:layout_height="40dp"
+            android:id="@+id/etNewHabitantAge"
+            android:background="@drawable/listview"/>
+
+        <!-- Adres -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space4"
+            android:layout_below="@+id/etNewHabitantAge"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Ulica:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantAddressTitle"
+                android:textColor="@color/black"
+                android:paddingBottom="5dp"
+                />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/etNewHabitantAddress"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@+id/space4"
+            android:background="@drawable/listview" />
+
+        <!-- Numer domu -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space5"
+            android:layout_below="@+id/etNewHabitantAddress"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Numer domu:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantHomeNumberTitle"
+                android:textColor="@color/black"
+                android:paddingBottom="5dp"
+                />
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/space5"
+            android:layout_height="40dp"
+            android:id="@+id/etNewHabitantHomeNumber"
+            android:background="@drawable/listview"/>
+
+        <!-- Numer mieszkania -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space6"
+            android:layout_below="@+id/etNewHabitantHomeNumber"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Numer mieszkania:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantFlatNumberTitle"
+                android:textColor="@color/black"
+                android:paddingBottom="5dp"
+                />
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/space6"
+            android:layout_height="40dp"
+            android:id="@+id/etNewHabitantFlatNumber"
+            android:background="@drawable/listview"/>
+
+
+        <!-- Prawny opiekun -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space7"
+            android:layout_below="@+id/etNewHabitantFlatNumber"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Prawny opiekun:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantConsuelorTitle"
+                android:textColor="@color/black"
+                android:paddingBottom="5dp"
+                />
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/space7"
+            android:layout_height="40dp"
+            android:id="@+id/etNewHabitantConsuelor"
+            android:background="@drawable/listview"/>
+
+        <!-- Kontakt do opiekuna -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space8"
+            android:layout_below="@+id/etNewHabitantConsuelor"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Kontakt do opiekuna:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantConsuelorContactTitle"
+                android:textColor="@color/black"
+                android:paddingBottom="5dp"
+                />
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/space8"
+            android:layout_height="40dp"
+            android:id="@+id/etNewHabitantConsuelorContact"
+            android:background="@drawable/listview"/>
+
+        <!-- Numer pokoju -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/space9"
+            android:layout_below="@+id/etNewHabitantConsuelorContact"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Numer pokoju:"
+                android:textSize="15dp"
+                android:id="@+id/tvNewHabitantRoomNumberTitle"
+                android:textColor="@color/black"
+                android:paddingBottom="5dp"
+                />
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/space9"
+            android:layout_height="40dp"
+            android:id="@+id/etNewHabitantRoomNumber"
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Przycisk do dodania mieszkańca -->
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:text="DODAJ"
+            android:background="@drawable/button_menu"
+            android:layout_below="@+id/etNewHabitantRoomNumber"
+            />
+
+
+
+    </RelativeLayout>
+</ScrollView>
+
+
+</RelativeLayout>

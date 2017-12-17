@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/white" >
+            android:background="@drawable/listview" >
 
 
             <ImageView
@@ -120,7 +120,7 @@
 
         <EditText
             android:id="@+id/etFirstName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="12"
             android:hint="Imie"
@@ -133,7 +133,7 @@
 
         <EditText
             android:id="@+id/etLastName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="12"
             android:hint="Nazwisko"

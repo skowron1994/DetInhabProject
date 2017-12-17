@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginshadow"
+    tools:context="com.detectinhabitants.detinhab.RegisterActivity">
+
+    <LinearLayout
+        android:id="@+id/linLogo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:background="@drawable/listview">
+
+        <ImageView
+            android:id="@+id/imgDetinhabreg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/detinhab"
+            android:padding="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zarejestruj"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/linLogo">
+
+        <EditText
+            android:id="@+id/etLoginReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="2dp"
+            android:ems="12"
+            android:hint="Login"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textColorHighlight="@color/black"
+            android:textColorLink="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/etMailReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/etLoginReg"
+            android:layout_marginTop="2dp"
+            android:ems="12"
+            android:hint="Adres email"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textColorLink="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/etPasswordReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/etMailReg"
+            android:layout_marginTop="2dp"
+            android:ems="12"
+            android:hint="Hasło"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textColorLink="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/etRePasswordReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/etPasswordReg"
+            android:layout_marginTop="2dp"
+            android:ems="12"
+            android:hint="Powtórz hasło"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textColorLink="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/etFirstNameReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/etRePasswordReg"
+            android:layout_marginTop="2dp"
+            android:ems="12"
+            android:hint="Imię"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textColorLink="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/etLastNameReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/etFirstNameReg"
+            android:ems="12"
+            android:hint="Nazwisko"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textColorLink="@color/black"
+            android:textSize="20dp" />
+
+
+        <EditText
+            android:id="@+id/etTokenReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/etLastNameReg"
+            android:layout_marginTop="2dp"
+            android:ems="12"
+            android:hint="Token rejestrujący"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textColorLink="@color/black"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btnRegisterReg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/etTokenReg"
+            android:layout_alignLeft="@+id/etTokenReg"
+            android:layout_alignRight="@+id/etTokenReg"
+            android:layout_alignStart="@+id/etTokenReg"
+            android:layout_below="@+id/etTokenReg"
+            android:text="Zarejestruj"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:background="@drawable/button_menu"
+            android:layout_marginTop="16dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

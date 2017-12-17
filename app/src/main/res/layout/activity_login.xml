@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="41dp"
             android:contentDescription="Logo aplikacji"
             app:srcCompat="@drawable/detinhab" />
 
@@ -88,8 +88,35 @@
             android:textAllCaps="false"
             android:textColor="@android:color/black"
             android:layout_marginTop="10dp"
-            android:textSize="15dp"
+            android:textSize="16dp"
             />
+
+        <TextView
+            android:id="@+id/tvSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPassForgotten"
+            android:layout_centerHorizontal="true"
+            android:text="------------------------ lub ------------------------"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="3dp"
+            android:textSize="16dp"
+            />
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSeparator"
+            android:layout_centerHorizontal="true"
+            android:text="Zarejestruj się, jeżeli nie posiadasz konta!"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="3dp"
+            android:textSize="16dp"
+            />
+
     </RelativeLayout>
 
 

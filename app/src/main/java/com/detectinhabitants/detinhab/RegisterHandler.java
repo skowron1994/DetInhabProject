@@ -63,7 +63,9 @@ public class RegisterHandler extends AsyncTask<String,String,String> {
             if(response == 200)
                 data = "true";
             else
+            {
                 data = null;
+            }
 
             return data;
 

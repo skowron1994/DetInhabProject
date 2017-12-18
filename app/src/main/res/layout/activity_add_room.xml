@@ -40,6 +40,134 @@
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvRoomListTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista pokoi:"
+        android:textSize="20dp"
+        android:layout_below="@id/linearLayout"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"/>
+    <ListView
+        android:background="@drawable/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvRoomList"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/tvRoomListTitle"
+        android:layout_marginBottom="65dp">
+    </ListView>
+
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:id="@+id/fbAddRoom"
+        android:background="@drawable/oval"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="65dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/add" />
+
+    <LinearLayout
+        android:id="@+id/dlgAddGuest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="40dp"
+        android:minHeight="100dp"
+        android:background="@drawable/listview"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dodaj pokój:"
+            android:textSize="20dp"
+            android:padding="5dp"/>
+
+        <EditText
+            android:id="@+id/etRoomNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Numer pokoju"
+            android:inputType="number"
+            android:singleLine="true"
+            android:digits="0123456789"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/etLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Piętro"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/etBedCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Liczba miejsc"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zatwierdź"
+                android:textSize="16dp"
+                android:layout_margin="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_menu"
+                android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anuluj"
+                android:textSize="16dp"
+                android:layout_margin="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_menu"
+                android:layout_marginTop="16dp"/>
+
         </LinearLayout>
 
     </LinearLayout>

@@ -52,6 +52,7 @@
     android:layout_below="@+id/linearLayout"
     android:id="@+id/sw1"
     android:layout_marginBottom="20dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -59,81 +60,85 @@
         <!-- Imię -->
 
         <RelativeLayout
+            android:id="@+id/space1"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space1"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:paddingBottom="5dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantNameTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Imię:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantNameTitle"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
         <EditText
+            android:id="@+id/etNewHabitantName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space1"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/space1"
-            android:layout_height="40dp"
-            android:id="@+id/etNewHabitantName"
-            android:background="@drawable/listview"/>
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"
+            android:inputType="textCapWords" />
 
         <!-- Nazwisko -->
 
         <RelativeLayout
+            android:id="@+id/space2"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space2"
             android:layout_below="@+id/etNewHabitantName"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantSurnameTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="5dp"
                 android:text="Nazwisko:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantSurnameTitle"
                 android:textColor="@color/black"
-                android:paddingBottom="5dp"/>
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
         <EditText
+            android:id="@+id/etNewHabitantSurname"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space2"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/space2"
-            android:layout_height="40dp"
-            android:id="@+id/etNewHabitantSurname"
-            android:background="@drawable/listview"/>
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"
+            android:inputType="textCapWords" />
 
 
         <!-- Płeć -->
 
         <RelativeLayout
+            android:id="@+id/space10"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space10"
             android:layout_below="@+id/etNewHabitantSurname"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantSexTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="5dp"
                 android:text="Płeć:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantSexTitle"
                 android:textColor="@color/black"
-                android:paddingBottom="5dp"/>
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
@@ -143,98 +148,127 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/etNewHabitantSurname"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
-        </RelativeLayout>
+            android:layout_marginRight="15dp"></RelativeLayout>
 
 
+        <LinearLayout
+            android:id="@+id/linearlayot2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativelayout2"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/genderChoose">
+                <RadioButton
+                    android:text="K"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:id="@+id/checkboxFemale"
+                    android:textSize="15dp"/>
+                <RadioButton
+                    android:text="M"
+                    android:id="@+id/checkboxMale"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"/>
+            </RadioGroup>
 
 
-<LinearLayout
-    android:id="@+id/linearlayot2"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_below="@+id/relativelayout2"
-    android:gravity="center_horizontal"
-    android:layout_marginTop="10dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="M"
-        android:textSize="15dp"
-        android:textColor="@color/black"/>
-    <CheckBox
-        android:id="@+id/checkboxMale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/checkboxFemale"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="K"
-        android:textSize="15dp"
-        android:textColor="@color/black"/>
-
-    <CheckBox
-        android:id="@+id/checkboxFemale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_toLeftOf="@+id/checkboxMale"/>
-
-</LinearLayout>
+        </LinearLayout>
 
         <!-- Wiek -->
 
         <RelativeLayout
+            android:id="@+id/space3"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space3"
             android:layout_below="@+id/linearlayot2"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantAgeTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Data urodzenia:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantAgeTitle"
+                android:paddingBottom="5dp"
+                android:text="Data urodzenia (tylko cyfry - dzień, miesiąć, rok):"
                 android:textColor="@color/black"
-                android:paddingBottom="5dp"/>
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
-        <EditText
+        <com.santalu.maskedittext.MaskEditText
+            android:id="@+id/etNewHabitantAge"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space3"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/space3"
-            android:layout_height="40dp"
-            android:id="@+id/etNewHabitantAge"
-            android:background="@drawable/listview"/>
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"
+            app:mask="##.##.####"
+            android:digits="0123456789"
+            android:inputType="number"/>
 
-        <!-- Adres -->
+
+        <!-- Państwo -->
 
         <RelativeLayout
+            android:id="@+id/space11"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space4"
             android:layout_below="@+id/etNewHabitantAge"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantCountryTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Ulica:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantAddressTitle"
-                android:textColor="@color/black"
                 android:paddingBottom="5dp"
-                />
+                android:text="Państwo:"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/etNewHabitantCountry"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space11"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"
+            />
+
+        <!-- Adres -->
+
+        <RelativeLayout
+            android:id="@+id/space4"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/etNewHabitantCountry"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:id="@+id/tvNewHabitantAddressTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp"
+                android:text="Ulica:"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
@@ -242,181 +276,267 @@
             android:id="@+id/etNewHabitantAddress"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_below="@+id/space4"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_below="@+id/space4"
-            android:background="@drawable/listview" />
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"/>
 
         <!-- Numer domu -->
 
         <RelativeLayout
+            android:id="@+id/space5"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space5"
             android:layout_below="@+id/etNewHabitantAddress"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantHomeNumberTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Numer domu:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantHomeNumberTitle"
-                android:textColor="@color/black"
                 android:paddingBottom="5dp"
-                />
+                android:text="Numer domu:"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
         <EditText
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/space5"
-            android:layout_height="40dp"
             android:id="@+id/etNewHabitantHomeNumber"
-            android:background="@drawable/listview"/>
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/space5"
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"
+            android:inputType="number"
+            android:digits="0123456789"/>
 
-        <!-- Numer mieszkania -->
+        <!-- Miasto -->
 
         <RelativeLayout
+            android:id="@+id/space6"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space6"
             android:layout_below="@+id/etNewHabitantHomeNumber"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantFlatNumberTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Numer mieszkania:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantFlatNumberTitle"
-                android:textColor="@color/black"
                 android:paddingBottom="5dp"
-                />
+                android:text="Miasto:"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
         <EditText
+            android:id="@+id/etNewHabitantFlatNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space6"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/space6"
-            android:layout_height="40dp"
-            android:id="@+id/etNewHabitantFlatNumber"
-            android:background="@drawable/listview"/>
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"
+            />
 
 
-        <!-- Prawny opiekun -->
+
+        <!-- Kod pocztowy -->
 
         <RelativeLayout
+            android:id="@+id/space12"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space7"
             android:layout_below="@+id/etNewHabitantFlatNumber"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantZipcodeTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Prawny opiekun:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantConsuelorTitle"
+                android:text="Kod pocztowy (tylko cyfry):"
                 android:textColor="@color/black"
+                android:layout_marginBottom="10dp"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+
+
+        <com.santalu.maskedittext.MaskEditText
+            android:id="@+id/etNewHabitantZipcode"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space12"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"
+            android:digits="1234567890"
+            app:mask="##-###"/>
+
+        <!--<EditText
+            android:id="@+id/etNewHabitantZipcode"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space12"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/listview"
+            android:layout_marginBottom="10dp"
+            android:digits="1234567890-"/>-->
+
+        <!-- Prawny opiekun -->
+
+        <RelativeLayout
+            android:id="@+id/space7"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/etNewHabitantZipcode"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:id="@+id/tvNewHabitantConsuelorTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:paddingBottom="5dp"
-                />
+                android:text="Prawny opiekun:"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
         <EditText
+            android:id="@+id/etNewHabitantConsuelor"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space7"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/space7"
-            android:layout_height="40dp"
-            android:id="@+id/etNewHabitantConsuelor"
-            android:background="@drawable/listview"/>
+            android:background="@drawable/listview"
+            android:inputType="textCapWords"
+            android:layout_marginBottom="10dp"/>
 
         <!-- Kontakt do opiekuna -->
 
         <RelativeLayout
+            android:id="@+id/space8"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space8"
             android:layout_below="@+id/etNewHabitantConsuelor"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantConsuelorContactTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Kontakt do opiekuna:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantConsuelorContactTitle"
-                android:textColor="@color/black"
                 android:paddingBottom="5dp"
-                />
+                android:text="Kontakt do opiekuna:"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
         <EditText
+            android:id="@+id/etNewHabitantConsuelorContact"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space8"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/space8"
-            android:layout_height="40dp"
-            android:id="@+id/etNewHabitantConsuelorContact"
-            android:background="@drawable/listview"/>
+            android:background="@drawable/listview"
+            android:inputType="number"
+            android:layout_marginBottom="10dp"
+            android:digits="0123456789"/>
 
         <!-- Numer pokoju -->
 
         <RelativeLayout
+            android:id="@+id/space9"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/space9"
             android:layout_below="@+id/etNewHabitantConsuelorContact"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
             <TextView
+                android:id="@+id/tvNewHabitantRoomNumberTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Numer pokoju:"
-                android:textSize="15dp"
-                android:id="@+id/tvNewHabitantRoomNumberTitle"
-                android:textColor="@color/black"
                 android:paddingBottom="5dp"
-                />
+                android:text="Numer pokoju:"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
         <EditText
+            android:id="@+id/etNewHabitantRoomNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space9"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_below="@+id/space9"
-            android:layout_height="40dp"
-            android:id="@+id/etNewHabitantRoomNumber"
             android:background="@drawable/listview"
+            android:inputType="number"
+            android:digits="0123456789"/>
+
+        <!-- Maksymalny czas powrotu -->
+
+        <RelativeLayout
+            android:id="@+id/space13"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/etNewHabitantRoomNumber"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:id="@+id/tvNewHabitantMaxTimeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp"
+                android:text="Maksymalna godzina powrotu:"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/etNewHabitantMaxTime"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/space13"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/listview"
+            android:inputType="number"
+            android:digits="0123456789"
             android:layout_marginBottom="10dp"/>
 
         <!-- Przycisk do dodania mieszkańca -->
 
         <Button
+            android:id="@+id/btnAddHabitant"
             android:layout_width="100dp"
             android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/etNewHabitantMaxTime"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:layout_alignParentRight="true"
-            android:text="DODAJ"
             android:background="@drawable/button_menu"
-            android:layout_below="@+id/etNewHabitantRoomNumber"
-            />
-
+            android:text="DODAJ" />
 
 
     </RelativeLayout>

@@ -13,12 +13,21 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         Button btnUser = findViewById(R.id.btnInhManag);
+        Button btnRoom = findViewById(R.id.btnGstManag);
 
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SettingsActivity.this, AddHabitantActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btnRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SettingsActivity.this, AddRoomActivity.class);
+                startActivity(i);
             }
         });
     }

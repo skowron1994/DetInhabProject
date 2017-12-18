@@ -18,8 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-public class AddHabitantHandler extends AsyncTask<String,String,String> {
-
+public class AddRoomHandler extends AsyncTask<String,String,String> {
 
     private int response;
     private String stResponse, stWait;
@@ -27,7 +26,7 @@ public class AddHabitantHandler extends AsyncTask<String,String,String> {
 
 
 
-    public AddHabitantHandler(Activity activity){
+    public AddRoomHandler(Activity activity){
         this.activity = activity;
         stWait = "Proszę czekać...";
     }
@@ -44,14 +43,14 @@ public class AddHabitantHandler extends AsyncTask<String,String,String> {
         try {
 
             //połączenie z api
-            URL url = new URL("http://detinhabapi.aspnet.pl/api/createHabitant/");
+            URL url = new URL("http://detinhabapi.aspnet.pl/api/CreateRoom");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("newHabData", params[0]);
+            connection.setRequestProperty("newRoomData", params[0]);
             response = connection.getResponseCode();
 
             if(response==200){
-                stResponse = "Dodano nowego mieszkańca do bazy.";
+                stResponse = "Dodano nowy pokój do bazy.";
             }
             else{
                 stResponse = connection.getHeaderField("message");
@@ -83,6 +82,6 @@ public class AddHabitantHandler extends AsyncTask<String,String,String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
 
-            Toast.makeText(activity.getApplicationContext(),result,Toast.LENGTH_LONG).show();
+        Toast.makeText(activity.getApplicationContext(),result,Toast.LENGTH_LONG).show();
     }
 }

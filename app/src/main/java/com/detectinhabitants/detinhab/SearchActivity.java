@@ -53,16 +53,14 @@ public class SearchActivity extends AppCompatActivity {
         lvInhabitants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                while (n <= position) {
-                    if (position == n) {
-                        Intent logger = new Intent(SearchActivity.this, ManageChosenActivity.class);
-                        logger.putExtra("id", n+1);
-                        startActivity(logger);
+                LoadHabitants.HabitantAdapter adapter =  (LoadHabitants.HabitantAdapter)parent.getAdapter();
+                HabitantModel hab = adapter.getItem((int)id);
 
-                    }
-                    n++;
-                }
-                n = 0;
+                Intent logger = new Intent(SearchActivity.this, ManageChosenActivity.class);
+                logger.putExtra("id", hab.getHabID().toString());
+                startActivity(logger);
+
+
             }
         });
     }

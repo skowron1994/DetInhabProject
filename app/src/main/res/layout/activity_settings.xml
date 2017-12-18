@@ -21,7 +21,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageView3"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -257,9 +257,179 @@
 
            </LinearLayout>
 
-
         </LinearLayout>
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/dlgChangeData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="40dp"
+        android:minHeight="100dp"
+        android:background="@drawable/listview"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Zmiana danych"
+            android:textSize="20dp"
+            android:padding="5dp"/>
+
+        <EditText
+            android:id="@+id/dlgEtFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Imie"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+
+
+        <EditText
+            android:id="@+id/dlgEtLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Nazwisko"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/dlgEtMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Adres email"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+
+            <Button
+                android:id="@+id/btnChgDataAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zatwierdź"
+                android:textSize="16dp"
+                android:layout_margin="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_menu"
+                android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/btnChngDataCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anuluj"
+                android:textSize="16dp"
+                android:layout_margin="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_menu"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dlgChangePass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="40dp"
+        android:minHeight="100dp"
+        android:background="@drawable/listview"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Zmiana hasła"
+            android:textSize="20dp"
+            android:padding="5dp"/>
+
+        <EditText
+            android:id="@+id/dlgEtNewPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Nowe hasło"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+
+
+        <EditText
+            android:id="@+id/dlgEtRePass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="12"
+            android:hint="Powtórz hasło"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+
+            <Button
+                android:id="@+id/btnChgPassAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zmień"
+                android:textSize="16dp"
+                android:layout_margin="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_menu"
+                android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/btnChngPassCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anuluj"
+                android:textSize="16dp"
+                android:layout_margin="6dp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_menu"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
 </RelativeLayout>

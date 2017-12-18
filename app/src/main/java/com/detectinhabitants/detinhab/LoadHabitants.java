@@ -68,6 +68,7 @@ public class LoadHabitants extends AsyncTask<String, String, List<HabitantModel>
 
                 JSONObject arrObject = habArray.getJSONObject(i);
 
+                model.setHabID(arrObject.getString("Id"));
                 model.setHabName(arrObject.getString("Name"));
                 model.setHabSurname(arrObject.getString("Surname"));
                 model.setRoomNumber(arrObject.getInt("RoomNumber"));
@@ -119,6 +120,11 @@ public class LoadHabitants extends AsyncTask<String, String, List<HabitantModel>
             habitantList = objects;
             this.resource = resource;
             inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
+        }
+
+        public HabitantModel getItem(int id)
+        {
+            return habitantList.get(id);
         }
 
         @NonNull

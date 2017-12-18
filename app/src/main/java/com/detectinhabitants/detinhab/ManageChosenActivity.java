@@ -39,7 +39,7 @@ public class ManageChosenActivity extends AppCompatActivity {
         statusChange = (ImageButton)findViewById(R.id.fbChangeStatus);
         lvStatusChange = (ListView)findViewById(R.id.lvStatusList);
         Bundle intent = getIntent().getExtras();
-        idChosen = String.valueOf(intent.getInt("id"));
+        idChosen = intent.getString("id");
         new HabitantHandler(ManageChosenActivity.this).execute(idChosen);
         lvStatusChange.setVisibility(View.INVISIBLE);
         statuslistchecker = false;

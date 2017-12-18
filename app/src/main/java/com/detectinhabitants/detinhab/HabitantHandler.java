@@ -56,7 +56,12 @@ public class HabitantHandler extends AsyncTask<String, String, HabitantModel> {
             model.setConsContact(object.getInt("ConsuelorContact"));
             model.setMaxReturnTime(object.getString("MaxTime"));
             model.setLastGuest(object.getString("LastGuest"));
-            model.setHabAge(object.getInt("Age"));
+
+            /// W BAZIE BEDZIE DATA ALE JA ZWROCE AGE juz wyliczone w api aby nie robic tego tutaj ale to pozniej
+            ///
+            //object.getString("Age");
+
+
             //płeć
             model.setAdnotations(object.getInt("Sex"));
             return model;

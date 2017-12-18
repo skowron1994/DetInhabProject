@@ -5,15 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    private LinearLayout dlgChangeData, dlgChangePass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        getSupportActionBar().hide();
         Button btnUser = findViewById(R.id.btnInhManag);
         Button btnRoom = findViewById(R.id.btnGstManag);
+        dlgChangeData = findViewById(R.id.dlgChangeData);
+        dlgChangePass = findViewById(R.id.dlgChangePass);
+        dlgChangeData.setVisibility(View.INVISIBLE);
+        dlgChangePass.setVisibility(View.INVISIBLE);
 
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override

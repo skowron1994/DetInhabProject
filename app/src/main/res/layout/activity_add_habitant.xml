@@ -22,7 +22,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageView6"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:padding="5dp"

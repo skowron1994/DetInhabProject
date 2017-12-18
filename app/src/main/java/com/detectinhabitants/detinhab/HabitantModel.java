@@ -2,6 +2,7 @@ package com.detectinhabitants.detinhab;
 
 
 public class HabitantModel {
+    private String habID;
     private String habName;
     private String habSurname;
     private int habAge;
@@ -91,5 +92,13 @@ public class HabitantModel {
 
     public void setAdnotations(int adnotations) {
         this.adnotations = adnotations;
+    }
+
+    public String getHabID() {
+        return habID;
+    }
+
+    public void setHabID(String habID) {
+        this.habID = habID;
     }
 }

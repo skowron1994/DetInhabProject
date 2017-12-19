@@ -56,28 +56,171 @@ public class AddHabitantActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                validateForm();
-                try {
-                    jsonData.put("Name", name);
-                    jsonData.put("Surname", surname);
-                    jsonData.put("Sex", genderId);
-                    jsonData.put("Birthday", age);
-                    jsonData.put("Country", country);
-                    jsonData.put("Street", street);
-                    jsonData.put("HouseNumber", homeNumber);
-                    jsonData.put("Town", town);
-                    jsonData.put("ZipCode", zipCode);
-                    jsonData.put("RoomId", roomNumber);
-                    jsonData.put("ConsuelorName", consuelor);
-                    jsonData.put("ConsuelorContact", consContact);
-                    jsonData.put("MaxTime", Integer.parseInt(returnTime));
-                    jsonData.put("BinaryData", null);
-                    jsonData.put("LastGuest", null);
-                    jsonData.put("Status", 1);
-                    String obj = jsonData.toString();
-                    new AddHabitantHandler(AddHabitantActivity.this).execute(obj);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if(isEmpty(etNewHabName)){
+                    Toast.makeText(getApplicationContext(),"Nie uzupełniono pola Imię.",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    if(etNewHabName.getText().toString().trim().length() < 3){
+                        Toast.makeText(getApplicationContext(),"Pole Imię musi posiadać przynajmniej 3 znaki.",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        name = etNewHabName.getText().toString();
+
+                        if(isEmpty(etNewHabSurname)){
+                            Toast.makeText(getApplicationContext(),"Nie uzupełniono pola Nazwisko.",Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            if(etNewHabSurname.getText().toString().trim().length() < 3){
+                                Toast.makeText(getApplicationContext(),"Pole nazwisko musi posiadać przynajmniej 3 znaki.",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                surname = etNewHabSurname.getText().toString();
+
+                                if(!maleChk.isChecked() && !femaleChk.isChecked()){
+                                    Toast.makeText(getApplicationContext(),"Płeć musi zostać wybrana.",Toast.LENGTH_SHORT).show();
+                                }
+                                else if(maleChk.isChecked() && femaleChk.isChecked()){
+                                    Toast.makeText(getApplicationContext(),"Należy wybrać tylko jedną płeć.",Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    if(maleChk.isChecked() && !femaleChk.isChecked()){
+                                        genderId = 1;
+                                    }
+                                    else if(!maleChk.isChecked() && femaleChk.isChecked()){
+                                        genderId = 2;
+                                    }
+
+                                    if(isEmpty(etNewHabAge)){
+                                        Toast.makeText(getApplicationContext(),"Nie uzupełniono pola Data urodzenia.",Toast.LENGTH_SHORT).show();
+                                    }
+                                    else{
+                                        if(!isValid(etNewHabAge.getText().toString())){
+                                            Toast.makeText(getApplicationContext(),"Niepoprawna data urodzenia. Format to dzień.miesiąc.rok",Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            age = etNewHabAge.getText().toString();
+
+                                            if(isEmpty(etNewHabCountry)){
+                                                Toast.makeText(getApplicationContext(),"Nie wypełniono pola Państwo.",Toast.LENGTH_SHORT).show();
+                                            }
+                                            else{
+                                                if(etNewHabCountry.getText().toString().trim().length()<3){
+                                                    Toast.makeText(getApplicationContext(),"Pole Państwo musi zawierać przynajmniej 3 znaki.",Toast.LENGTH_SHORT).show();
+                                                }
+                                                else{
+                                                    country = etNewHabCountry.getText().toString();
+
+                                                    if(isEmpty(etNewHabAddress)){
+                                                        Toast.makeText(getApplicationContext(),"Nie podano ulicy.",Toast.LENGTH_SHORT).show();
+                                                    }
+                                                    else{
+                                                        if(etNewHabAddress.getText().toString().trim().length()<3){
+                                                            Toast.makeText(getApplicationContext(),"Pole Ulica musi się składać z przynajmniej 3 znaków.",Toast.LENGTH_SHORT).show();
+                                                        }
+                                                        else{
+                                                            street = etNewHabAddress.getText().toString();
+
+                                                            if(isEmpty(etNewHabHomeNubmer)){
+                                                                Toast.makeText(getApplicationContext(),"Nie podano numeru domu.",Toast.LENGTH_SHORT).show();
+                                                            }
+                                                            else{
+                                                                homeNumber = etNewHabHomeNubmer.getText().toString();
+
+                                                                if(isEmpty(etNewHabFlatNumber)){
+                                                                    Toast.makeText(getApplicationContext(),"Nie wypełniono pola miasto.",Toast.LENGTH_SHORT).show();
+                                                                }
+                                                                else{
+                                                                    if(etNewHabFlatNumber.getText().toString().trim().length()<3){
+                                                                        Toast.makeText(getApplicationContext(),"Miasto musi się składać z przynajmniej 3 liter.",Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                    else{
+                                                                        town = etNewHabFlatNumber.getText().toString();
+
+                                                                        if(isEmpty(etZipCode)){
+                                                                            Toast.makeText(getApplicationContext(),"Podaj kod pocztowy",Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                        else{
+                                                                            if(etZipCode.getText().toString().trim().length()<6 || etZipCode.getText().toString().trim().length()>6){
+                                                                                Toast.makeText(getApplicationContext(),"Kod pocztowy musi składać się z 5 cyfr",Toast.LENGTH_SHORT).show();
+                                                                            }
+                                                                            else{
+                                                                                zipCode = etZipCode.getText().toString();
+
+                                                                                if(isEmpty(etnewHabConsuelor)){
+                                                                                    Toast.makeText(getApplicationContext(),"Należy wypełnić pole Prawny opiekun.",Toast.LENGTH_SHORT).show();
+                                                                                }
+                                                                                else{
+                                                                                    if(etnewHabConsuelor.getText().toString().trim().length()<3){
+                                                                                        Toast.makeText(getApplicationContext(),"Pole Prawny opiekun musi posiadać przynajmniej 3 znaki.",Toast.LENGTH_SHORT).show();
+                                                                                    }
+                                                                                    else{
+                                                                                        consuelor = etnewHabConsuelor.getText().toString();
+
+                                                                                        if(isEmpty(etNewHabConsuelorContact)){
+                                                                                            Toast.makeText(getApplicationContext(),"Wypełnij pole Kontakt do opiekuna.",Toast.LENGTH_SHORT).show();
+                                                                                        }
+                                                                                        else{
+                                                                                            if(etNewHabConsuelorContact.getText().toString().trim().length()!=9){
+                                                                                                Toast.makeText(getApplicationContext(),"Telefon musi składać się z 9 cyfr.",Toast.LENGTH_SHORT).show();
+                                                                                            }
+                                                                                            else{
+                                                                                                consContact = etNewHabConsuelorContact.getText().toString();
+
+                                                                                                if(isEmpty(etNewHabRoomNumber)){
+                                                                                                    Toast.makeText(getApplicationContext(),"Należy wypełnić pole Numer pokoju.",Toast.LENGTH_SHORT).show();
+                                                                                                }
+                                                                                                else{
+                                                                                                    roomNumber = etNewHabRoomNumber.getText().toString();
+
+                                                                                                    if(isEmpty(etMaxTime)){
+                                                                                                        Toast.makeText(getApplicationContext(),"Należy wypełnić pole Maksymalna godzina powrotu.",Toast.LENGTH_SHORT).show();
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        returnTime = etMaxTime.getText().toString();
+                                                                                                        try {
+                                                                                                            jsonData.put("Name", name);
+                                                                                                            jsonData.put("Surname", surname);
+                                                                                                            jsonData.put("Sex", genderId);
+                                                                                                            jsonData.put("Birthday", age);
+                                                                                                            jsonData.put("Country", country);
+                                                                                                            jsonData.put("Street", street);
+                                                                                                            jsonData.put("HouseNumber", homeNumber);
+                                                                                                            jsonData.put("Town", town);
+                                                                                                            jsonData.put("ZipCode", zipCode);
+                                                                                                            jsonData.put("RoomId", roomNumber);
+                                                                                                            jsonData.put("ConsuelorName", consuelor);
+                                                                                                            jsonData.put("ConsuelorContact", consContact);
+                                                                                                            jsonData.put("MaxTime", Integer.parseInt(returnTime));
+                                                                                                            jsonData.put("BinaryData", null);
+                                                                                                            jsonData.put("LastGuest", null);
+                                                                                                            jsonData.put("Status", 1);
+                                                                                                            String obj = jsonData.toString();
+                                                                                                            new AddHabitantHandler(AddHabitantActivity.this).execute(obj);
+                                                                                                        } catch (JSONException e) {
+                                                                                                            e.printStackTrace();
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -95,150 +238,7 @@ public class AddHabitantActivity extends AppCompatActivity {
     private void validateForm(){
 
 
-        if(isEmpty(etNewHabName)){
-            Toast.makeText(getApplicationContext(),"Nie uzupełniono pola Imię.",Toast.LENGTH_SHORT).show();
-        }
-        else{
-            if(etNewHabName.getText().toString().trim().length() < 3){
-                Toast.makeText(getApplicationContext(),"Pole Imię musi posiadać przynajmniej 3 znaki.",Toast.LENGTH_SHORT).show();
-            }
-            else{
-                name = etNewHabName.getText().toString();
 
-                if(isEmpty(etNewHabSurname)){
-                    Toast.makeText(getApplicationContext(),"Nie uzupełniono pola Nazwisko.",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    if(etNewHabSurname.getText().toString().trim().length() < 3){
-                        Toast.makeText(getApplicationContext(),"Pole nazwisko musi posiadać przynajmniej 3 znaki.",Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        surname = etNewHabSurname.getText().toString();
-
-                        if(!maleChk.isChecked() && !femaleChk.isChecked()){
-                            Toast.makeText(getApplicationContext(),"Płeć musi zostać wybrana.",Toast.LENGTH_SHORT).show();
-                        }
-                        else if(maleChk.isChecked() && femaleChk.isChecked()){
-                            Toast.makeText(getApplicationContext(),"Należy wybrać tylko jedną płeć.",Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            if(maleChk.isChecked() && !femaleChk.isChecked()){
-                                genderId = 1;
-                            }
-                            else if(!maleChk.isChecked() && femaleChk.isChecked()){
-                                genderId = 2;
-                            }
-
-                            if(isEmpty(etNewHabAge)){
-                                Toast.makeText(getApplicationContext(),"Nie uzupełniono pola Data urodzenia.",Toast.LENGTH_SHORT).show();
-                            }
-                            else{
-                                if(!isValid(etNewHabAge.getText().toString())){
-                                    Toast.makeText(getApplicationContext(),"Niepoprawna data urodzenia. Format to dzień.miesiąc.rok",Toast.LENGTH_SHORT).show();
-                                }
-                                else{
-                                    age = etNewHabAge.getText().toString();
-
-                                    if(isEmpty(etNewHabCountry)){
-                                        Toast.makeText(getApplicationContext(),"Nie wypełniono pola Państwo.",Toast.LENGTH_SHORT).show();
-                                    }
-                                    else{
-                                        if(etNewHabCountry.getText().toString().trim().length()<3){
-                                            Toast.makeText(getApplicationContext(),"Pole Państwo musi zawierać przynajmniej 3 znaki.",Toast.LENGTH_SHORT).show();
-                                        }
-                                        else{
-                                            country = etNewHabCountry.getText().toString();
-
-                                            if(isEmpty(etNewHabAddress)){
-                                                Toast.makeText(getApplicationContext(),"Nie podano ulicy.",Toast.LENGTH_SHORT).show();
-                                            }
-                                            else{
-                                                if(etNewHabAddress.getText().toString().trim().length()<3){
-                                                    Toast.makeText(getApplicationContext(),"Pole Ulica musi się składać z przynajmniej 3 znaków.",Toast.LENGTH_SHORT).show();
-                                                }
-                                                else{
-                                                    street = etNewHabAddress.getText().toString();
-
-                                                    if(isEmpty(etNewHabHomeNubmer)){
-                                                        Toast.makeText(getApplicationContext(),"Nie podano numeru domu.",Toast.LENGTH_SHORT).show();
-                                                    }
-                                                    else{
-                                                        homeNumber = etNewHabHomeNubmer.getText().toString();
-
-                                                        if(isEmpty(etNewHabFlatNumber)){
-                                                            Toast.makeText(getApplicationContext(),"Nie wypełniono pola miasto.",Toast.LENGTH_SHORT).show();
-                                                        }
-                                                        else{
-                                                            if(etNewHabFlatNumber.getText().toString().trim().length()<3){
-                                                                Toast.makeText(getApplicationContext(),"Miasto musi się składać z przynajmniej 3 liter.",Toast.LENGTH_SHORT).show();
-                                                            }
-                                                            else{
-                                                                town = etNewHabFlatNumber.getText().toString();
-
-                                                                if(isEmpty(etZipCode)){
-                                                                    Toast.makeText(getApplicationContext(),"Podaj kod pocztowy",Toast.LENGTH_SHORT).show();
-                                                                }
-                                                                else{
-                                                                    if(etZipCode.getText().toString().trim().length()<6 || etZipCode.getText().toString().trim().length()>6){
-                                                                        Toast.makeText(getApplicationContext(),"Kod pocztowy musi składać się z 5 cyfr",Toast.LENGTH_SHORT).show();
-                                                                    }
-                                                                    else{
-                                                                        zipCode = etZipCode.getText().toString();
-
-                                                                        if(isEmpty(etnewHabConsuelor)){
-                                                                            Toast.makeText(getApplicationContext(),"Należy wypełnić pole Prawny opiekun.",Toast.LENGTH_SHORT).show();
-                                                                        }
-                                                                        else{
-                                                                            if(etnewHabConsuelor.getText().toString().trim().length()<3){
-                                                                                Toast.makeText(getApplicationContext(),"Pole Prawny opiekun musi posiadać przynajmniej 3 znaki.",Toast.LENGTH_SHORT).show();
-                                                                            }
-                                                                            else{
-                                                                                consuelor = etnewHabConsuelor.getText().toString();
-
-                                                                                if(isEmpty(etNewHabConsuelorContact)){
-                                                                                    Toast.makeText(getApplicationContext(),"Wypełnij pole Kontakt do opiekuna.",Toast.LENGTH_SHORT).show();
-                                                                                }
-                                                                                else{
-                                                                                    if(etNewHabConsuelorContact.getText().toString().trim().length()!=9){
-                                                                                        Toast.makeText(getApplicationContext(),"Telefon musi składać się z 9 cyfr.",Toast.LENGTH_SHORT).show();
-                                                                                    }
-                                                                                    else{
-                                                                                        consContact = etNewHabConsuelorContact.getText().toString();
-
-                                                                                        if(isEmpty(etNewHabRoomNumber)){
-                                                                                            Toast.makeText(getApplicationContext(),"Należy wypełnić pole Numer pokoju.",Toast.LENGTH_SHORT).show();
-                                                                                        }
-                                                                                        else{
-                                                                                            roomNumber = etNewHabRoomNumber.getText().toString();
-
-                                                                                            if(isEmpty(etMaxTime)){
-                                                                                                Toast.makeText(getApplicationContext(),"Należy wypełnić pole Maksymalna godzina powrotu.",Toast.LENGTH_SHORT).show();
-                                                                                            }
-                                                                                            else{
-                                                                                                returnTime = etMaxTime.getText().toString();
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
 
 

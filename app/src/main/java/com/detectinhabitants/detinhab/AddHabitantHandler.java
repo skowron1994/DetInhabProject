@@ -48,6 +48,7 @@ public class AddHabitantHandler extends AsyncTask<String,String,String> {
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("newHabData", params[0]);
+            connection.connect();
             response = connection.getResponseCode();
 
             if(response==200){

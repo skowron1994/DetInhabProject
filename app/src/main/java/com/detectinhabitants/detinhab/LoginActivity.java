@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 LoginHandler login = new LoginHandler(LoginActivity.this);
                 login.execute(etLogin.getText().toString(),etPassword.getText().toString());
 

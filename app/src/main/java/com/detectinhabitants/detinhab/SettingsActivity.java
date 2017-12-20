@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private LinearLayout dlgChangeData, dlgChangePass;
     private EditText etUserName, etUserSurname, etUserMail, etNewPass, etRetypePass;
+    public static TextView tvFirstName, tvUserLastName, tvUserEmail, tvUserLogin;
+    private String login, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,10 @@ public class SettingsActivity extends AppCompatActivity {
         Button btnRoom = findViewById(R.id.btnGstManag);
         Button btnChangeData = findViewById(R.id.btnChangeData);
         Button btnChangePass = findViewById(R.id.btnChangePass);
+        final Button btnPassCancel = findViewById(R.id.btnChngPassCancel);
+        final Button btnChangeCancel = findViewById(R.id.btnChngDataCancel);
+        final Button btnChangeAccept = findViewById(R.id.btnChgDataAccept);
+        final Button btnPassAccept = findViewById(R.id.btnChgPassAccept);
         etUserName = findViewById(R.id.dlgEtFirstName);
         etUserSurname = findViewById(R.id.dlgEtLastName);
         etUserMail = findViewById(R.id.dlgEtMail);
@@ -31,6 +38,14 @@ public class SettingsActivity extends AppCompatActivity {
         dlgChangePass = findViewById(R.id.dlgChangePass);
         dlgChangeData.setVisibility(View.INVISIBLE);
         dlgChangePass.setVisibility(View.INVISIBLE);
+        tvFirstName = findViewById(R.id.tvFirstName);
+        tvUserLastName = findViewById(R.id.tvUserLastName);
+        tvUserEmail = findViewById(R.id.tvUserEmail);
+        tvUserLogin = findViewById(R.id.tvUserLogin);
+        new LoadUserData(SettingsActivity.this).execute(AppHelper.UserContext.getUsrLogin(),AppHelper.UserContext.getUsrPassword());
+
+
+
 
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,8 +70,25 @@ public class SettingsActivity extends AppCompatActivity {
                     clearChangeDataDialogControl();
                     dlgChangeData.setVisibility(View.INVISIBLE);
                 }
-                else
+                else{
                     dlgChangeData.setVisibility(View.VISIBLE);
+                    btnChangeCancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            clearChangeDataDialogControl();
+                            dlgChangeData.setVisibility(View.INVISIBLE);
+                        }
+                    });
+
+                    btnChangeAccept.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            new UserDataChangeHandler(SettingsActivity.this).execute(etUserName.getText().toString(), etUserSurname.getText().toString(), etUserMail.getText().toString());
+                            new LoadUserData(SettingsActivity.this).execute(AppHelper.UserContext.getUsrLogin(),AppHelper.UserContext.getUsrPassword());
+                        }
+                    });
+                }
+
             }
         });
 
@@ -67,8 +99,17 @@ public class SettingsActivity extends AppCompatActivity {
                     clearChangePassDialogControl();
                     dlgChangePass.setVisibility(View.INVISIBLE);
                 }
-                else
+                else{
                     dlgChangePass.setVisibility(View.VISIBLE);
+                    btnPassCancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            clearChangePassDialogControl();
+                            dlgChangePass.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                }
+
             }
         });
     }

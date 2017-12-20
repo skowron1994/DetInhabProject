@@ -69,6 +69,7 @@ public class AddRoomActivity extends AppCompatActivity {
                                 roomData.put("RoomBedCount", etRoomBedCount.getText().toString());
                                 String obj  = roomData.toString();
                                 new AddRoomHandler(AddRoomActivity.this).execute(obj);
+                                new LoadRooms(AddRoomActivity.this).execute();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

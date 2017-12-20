@@ -47,6 +47,7 @@ public class AddRoomHandler extends AsyncTask<String,String,String> {
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("newRoomData", params[0]);
+            connection.connect();
             response = connection.getResponseCode();
 
             if(response==200){

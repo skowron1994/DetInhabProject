@@ -143,10 +143,10 @@ public class LoadRooms extends AsyncTask<String, String, List<RoomModel>> {
             tvRoomItem3 = convertView.findViewById(R.id.tvLevel);
             tvRoomItem4 = convertView.findViewById(R.id.tvBedCount);
 
-            tvRoomItem1.setText(roomsList.get(position).getID());
-            tvRoomItem2.setText(roomsList.get(position).getRoomNumber());
-            tvRoomItem3.setText(roomsList.get(position).getLevel());
-            tvRoomItem4.setText(roomsList.get(position).getBedCount());
+            tvRoomItem1.setText(String.valueOf(roomsList.get(position).getID()));
+            tvRoomItem2.setText(String.valueOf(roomsList.get(position).getRoomNumber()));
+            tvRoomItem3.setText(String.valueOf(roomsList.get(position).getLevel()));
+            tvRoomItem4.setText(String.valueOf(roomsList.get(position).getBedCount()));
 
             return convertView;
         }

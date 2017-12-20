@@ -102,8 +102,16 @@ public class LoadGuests extends AsyncTask<String, String, List<HabitantModel>> {
     @Override
     protected void onPostExecute(List<HabitantModel> s) {
         super.onPostExecute(s);
-        HabitantAdapter adapter = new HabitantAdapter(activity.getApplicationContext(), R.layout.habitants, s);
-        SearchActivity.lvInhabitants.setAdapter(adapter);
+        if(s==null){
+            String[] emptyList = new String[]{"brak informacji do wyświetlenia..."};
+            ArrayAdapter<String> resultEmpty = new ArrayAdapter<String>(activity.getApplicationContext(), R.layout.empty, R.id.tvEmpty, emptyList);
+            AddRoomActivity.lvRooms.setAdapter(resultEmpty);
+        }
+        else{
+            HabitantAdapter adapter = new HabitantAdapter(activity.getApplicationContext(), R.layout.habitants, s);
+            SearchActivity.lvInhabitants.setAdapter(adapter);
+        }
+
     }
 
 
@@ -115,6 +123,7 @@ public class LoadGuests extends AsyncTask<String, String, List<HabitantModel>> {
 
         public HabitantAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<HabitantModel> objects) {
             super(context, resource, objects);
+
 
             habitantList = objects;
             this.resource = resource;

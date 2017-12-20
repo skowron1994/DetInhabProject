@@ -16,57 +16,40 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
-//klasa przeznaczona do obsługi logowania
-public class LoginHandler extends AsyncTask<String,String,String> {
+public class LoadUserData extends AsyncTask<String,String,UserModel> {
 
 
     private String data;
-    private int response;
-    private String stError, stSuccess, stUnexpected, stWait;
     private Activity activity;
-    private String resp;
 
 
-    public LoginHandler(Activity activity){
+
+    public LoadUserData(Activity activity){
         this.activity = activity;
-        stError = "Podaj prawidłowe dane.";
-        stSuccess = "Pomyślnie zalogowano!";
-        stUnexpected = "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.";
-        stWait = "Proszę czekać...";
     }
 
-    public LoginHandler() {
-
-    }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Toast.makeText(activity.getApplicationContext(),stWait,Toast.LENGTH_SHORT).show();
     }
     @Override
-    protected String doInBackground(String... params) {
+    protected UserModel doInBackground(String... params) {
         HttpURLConnection connection = null;
         BufferedReader reader = null;
         try {
 
-            //połączenie z api
             URL url = new URL("http://detinhabapi.aspnet.pl/api/login/");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("login", params[0]);
             connection.setRequestProperty("password", params[1]);
-            resp = connection.getHeaderField("message");
-            response = connection.getResponseCode();
             InputStream stream = connection.getInputStream();
             reader = new BufferedReader(new InputStreamReader(stream));
 
-            //buffer do zapisania odpowiedzi z api
             StringBuffer buffer = new StringBuffer();
             String line = "";
 
-            //wypełnianie buffera danymi
             while ((line = reader.readLine()) != null) {
                 buffer.append(line);
             }
@@ -74,12 +57,8 @@ public class LoginHandler extends AsyncTask<String,String,String> {
             data = buffer.toString();
 
 
-            //obsługa logowania i utworzenia nowej aktywności
             if (data!=null){
 
-                //tworzenie JsonObjectu i wypełnianie go pobranymi danymi (potrzebne do obsługi paru rzeczy,
-                //jak m.in wyświetlenie imienia użytkownika przy zalogowaniu )
-                //userContext użyty, aby mieć globalny dostęp do użytkownika np. do wykorzystania w powyższych
                 JSONObject dataObject = new JSONObject(data);
                 AppHelper.UserContext = new UserModel();
                 AppHelper.UserContext.setUsrID(dataObject.getInt("UniqueID"));
@@ -90,11 +69,9 @@ public class LoginHandler extends AsyncTask<String,String,String> {
                 AppHelper.UserContext.setUsrMail(dataObject.getString("Mail"));
                 AppHelper.UserContext.setUsPermission(dataObject.getInt("PermissionFlag"));
 
-                Intent logger = new Intent(activity, MenuActivity.class);
-                activity.startActivity(logger);
             }
 
-            return data;
+            return AppHelper.UserContext;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -120,19 +97,11 @@ public class LoginHandler extends AsyncTask<String,String,String> {
     }
 
     @Override
-    protected void onPostExecute(String result) {
+    protected void onPostExecute(UserModel result) {
         super.onPostExecute(result);
-        /*if (data != null) {
-            Toast.makeText(activity.getApplicationContext(),stSuccess,Toast.LENGTH_LONG).show();
-        }
-        else if(data==null){
-            Toast.makeText(activity.getApplicationContext(),stError,Toast.LENGTH_SHORT).show();
-        }
-        else{
-
-            Toast.makeText(activity.getApplicationContext(),stUnexpected,Toast.LENGTH_SHORT).show();
-        }*/
-        Toast.makeText(activity.getApplicationContext(),resp,Toast.LENGTH_SHORT).show();
-
+        SettingsActivity.tvFirstName.setText(result.getUsrName());
+        SettingsActivity.tvUserLastName.setText(result.getUsrSurname());
+        SettingsActivity.tvUserEmail.setText(result.getUsrMail());
+        SettingsActivity.tvUserLogin.setText(result.getUsrLogin());
     }
 }
